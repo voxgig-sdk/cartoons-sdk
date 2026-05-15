@@ -1,0 +1,101 @@
+# Entity: cartoon
+
+main: kit: entity: cartoon: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "creator"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "episode"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "genre"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "image"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "rating"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "runtime_in_minute"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "title"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "year"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "cartoon"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/cartoons/cartoons2D"
+          parts: [
+            "cartoons"
+            "cartoons2D"
+          ]
+          select: {
+            "$action": "cartoons2_d"
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/cartoons/cartoons3D"
+          parts: [
+            "cartoons"
+            "cartoons3D"
+          ]
+          select: {
+            "$action": "cartoons3_d"
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

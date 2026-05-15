@@ -1,0 +1,22 @@
+# BasicCartoonFlow
+
+main: kit: flow: BasicCartoonFlow:
+{
+  entity: "cartoon",
+  kind: "basic",
+  name: "BasicCartoonFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "cartoon_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCartoonFlow"
+}

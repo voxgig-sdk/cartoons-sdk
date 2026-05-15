@@ -1,0 +1,148 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Cartoons",
+    "description": "If cartoons is what you like then boy do we have a full list of all the cartoons from the past and present and all their details including a amazingly sourced image to showcase",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Sample APIs",
+      "url": "https://sampleapis.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.sampleapis.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/cartoons/cartoons2D": {
+      "get": {
+        "summary": "Get all 2D cartoons",
+        "description": "Returns a list of all 2D cartoons with their details including images",
+        "operationId": "get2DCartoons",
+        "tags": [
+          "Cartoons"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Cartoon"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/cartoons/cartoons3D": {
+      "get": {
+        "summary": "Get all 3D cartoons",
+        "description": "Returns a list of all 3D cartoons with their details including images",
+        "operationId": "get3DCartoons",
+        "tags": [
+          "Cartoons"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Cartoon"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Cartoon": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the cartoon",
+            "example": 1
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the cartoon",
+            "example": "SpongeBob SquarePants"
+          },
+          "year": {
+            "type": "integer",
+            "description": "Year the cartoon was released",
+            "example": 1999
+          },
+          "creator": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Creator(s) of the cartoon",
+            "example": [
+              "Stephen Hillenburg"
+            ]
+          },
+          "rating": {
+            "type": "string",
+            "description": "Rating of the cartoon",
+            "example": "TV-Y7"
+          },
+          "genre": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Genre(s) of the cartoon",
+            "example": [
+              "Comedy",
+              "Family"
+            ]
+          },
+          "runtime_in_minutes": {
+            "type": "integer",
+            "description": "Runtime of the cartoon episode in minutes",
+            "example": 23
+          },
+          "episodes": {
+            "type": "integer",
+            "description": "Number of episodes",
+            "example": 272
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the cartoon's image",
+            "example": "https://example.com/image.jpg"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Cartoons",
+      "description": "Operations related to cartoons from past and present"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Sample APIs"
+        url: "https://sampleapis.com"
+      }
+      description: "If cartoons is what you like then boy do we have a full list of all the cartoons from the past and present and all their details including a amazingly sourced image to showcase"
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api.sampleapis.com"
+        }
+      ]
+      title: "Cartoons"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

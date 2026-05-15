@@ -1,0 +1,19 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 1
+  metrics: count: path: 2
+  metrics: count: method: 2
+
+  entity: cartoon: {
+    path: "/cartoons/cartoons2D": {
+      action: "cartoons2_d": {}
+      op: list: method: *GET
+    }
+    path: "/cartoons/cartoons3D": {
+      action: "cartoons3_d": {}
+      op: list: method: *GET
+    }
+  }
+
+}
