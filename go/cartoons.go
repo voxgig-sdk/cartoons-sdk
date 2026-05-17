@@ -1,10 +1,10 @@
 package voxgigcartoonssdk
 
 import (
-	"github.com/voxgig-sdk/cartoons-sdk/core"
-	"github.com/voxgig-sdk/cartoons-sdk/entity"
-	"github.com/voxgig-sdk/cartoons-sdk/feature"
-	_ "github.com/voxgig-sdk/cartoons-sdk/utility"
+	"github.com/voxgig-sdk/cartoons-sdk/go/core"
+	"github.com/voxgig-sdk/cartoons-sdk/go/entity"
+	"github.com/voxgig-sdk/cartoons-sdk/go/feature"
+	_ "github.com/voxgig-sdk/cartoons-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

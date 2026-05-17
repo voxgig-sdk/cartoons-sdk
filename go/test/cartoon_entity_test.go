@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/cartoons-sdk"
-	"github.com/voxgig-sdk/cartoons-sdk/core"
+	sdk "github.com/voxgig-sdk/cartoons-sdk/go"
+	"github.com/voxgig-sdk/cartoons-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/cartoons-sdk/go/utility/struct"
 )
 
 func TestCartoonEntity(t *testing.T) {

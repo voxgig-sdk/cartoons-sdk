@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/cartoons-sdk"
-	"github.com/voxgig-sdk/cartoons-sdk/core"
+	sdk "github.com/voxgig-sdk/cartoons-sdk/go"
+	"github.com/voxgig-sdk/cartoons-sdk/go/core"
 )
 
 func TestCartoonDirect(t *testing.T) {
