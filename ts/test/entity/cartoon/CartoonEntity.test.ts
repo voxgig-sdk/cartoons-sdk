@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'CARTOONS_TEST_CARTOON_ENTID': idmap,
     'CARTOONS_TEST_LIVE': 'FALSE',
     'CARTOONS_TEST_EXPLAIN': 'FALSE',
-    'CARTOONS_APIKEY': 'NONE',
   })
 
   idmap = env['CARTOONS_TEST_CARTOON_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new CartoonsSDK(merge([
       {
-        apikey: env.CARTOONS_APIKEY,
       },
       extra
     ]))

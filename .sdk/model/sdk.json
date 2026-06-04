@@ -17,7 +17,17 @@
           }
         ],
         "title": "Cartoons",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Browse a sample dataset of 2D and 3D cartoons with titles, descriptions, and sourced imagery",
+        "homepage": "https://sampleapis.com/api-list/cartoons",
+        "docs_url": "https://sampleapis.com/api-list/cartoons",
+        "license_short": "Sample data for educational/testing use; not owned by SampleAPIs",
+        "license_md": "- Data is published by [SampleAPIs](https://sampleapis.com) for educational and prototyping use only.\n- SampleAPIs states the data is not owned by them and may be reset on a regular basis.\n- No explicit licence is declared for the cartoon entries or accompanying images; treat as unsuitable for production reuse.\n- Verify any image attribution independently before redistribution.",
+        "about_md": "The Cartoons API is one of the free practice datasets published on [SampleAPIs](https://sampleapis.com), a playground for experimenting with RESTful endpoints. It serves a small catalogue of cartoons split into 2D and 3D collections, each entry typically including a title, description and an image URL.\n\nWhat you can do with the API:\n\n- List 2D cartoons via `GET /cartoons/cartoons2D`.\n- List 3D cartoons via `GET /cartoons/cartoons3D`.\n\nThe service is unauthenticated and CORS-enabled, so it can be called directly from browser code. As with the rest of SampleAPIs, the dataset is reset periodically and is intended for demos, tutorials and SDK testing rather than as a canonical source of cartoon information.",
+        "entity_desc": {
+          "cartoon": "A cartoon entry from the SampleAPIs catalogue, served from `GET /cartoons/cartoons2D` and `GET /cartoons/cartoons3D` with title, description and image fields."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -25,7 +35,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "cartoon": {

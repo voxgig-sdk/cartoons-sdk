@@ -61,14 +61,12 @@ def _cartoon_direct_setup(mockres):
     env = runner.env_override({
         "CARTOONS_TEST_CARTOON_ENTID": {},
         "CARTOONS_TEST_LIVE": "FALSE",
-        "CARTOONS_APIKEY": "NONE",
     })
 
     live = env.get("CARTOONS_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("CARTOONS_APIKEY"),
         }
         client = CartoonsSDK(merged_opts)
         return {

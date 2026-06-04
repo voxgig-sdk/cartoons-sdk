@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { CartoonsSDK } from 'cartoons'
 
-const client = new CartoonsSDK({
-  apikey: process.env.CARTOONS_APIKEY,
-})
+const client = new CartoonsSDK({})
 ```
 
 ### 2. List cartoons
@@ -84,7 +82,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new CartoonsSDK({ apikey: '...' })
+const client = new CartoonsSDK()
 const testClient = client.tester()
 ```
 
@@ -120,7 +118,6 @@ const logger = {
 }
 
 const client = new CartoonsSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -131,7 +128,6 @@ Create a `.env.local` file at the project root:
 
 ```
 CARTOONS_TEST_LIVE=TRUE
-CARTOONS_APIKEY=<your-key>
 ```
 
 Then run:
@@ -149,7 +145,6 @@ cd ts && npm test
 
 ```ts
 new CartoonsSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -160,7 +155,6 @@ new CartoonsSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

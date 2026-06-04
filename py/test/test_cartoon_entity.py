@@ -92,7 +92,6 @@ def _cartoon_basic_setup(extra):
         "CARTOONS_TEST_CARTOON_ENTID": idmap,
         "CARTOONS_TEST_LIVE": "FALSE",
         "CARTOONS_TEST_EXPLAIN": "FALSE",
-        "CARTOONS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ def _cartoon_basic_setup(extra):
     if env.get("CARTOONS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("CARTOONS_APIKEY"),
             },
             extra or {},
         ])

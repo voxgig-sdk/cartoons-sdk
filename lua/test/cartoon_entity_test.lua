@@ -92,7 +92,6 @@ function cartoon_basic_setup(extra)
     ["CARTOONS_TEST_CARTOON_ENTID"] = idmap,
     ["CARTOONS_TEST_LIVE"] = "FALSE",
     ["CARTOONS_TEST_EXPLAIN"] = "FALSE",
-    ["CARTOONS_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -104,7 +103,6 @@ function cartoon_basic_setup(extra)
   if env["CARTOONS_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["CARTOONS_APIKEY"],
       },
       extra or {},
     })

@@ -86,7 +86,6 @@ function cartoon_basic_setup($extra)
         "CARTOONS_TEST_CARTOON_ENTID" => $idmap,
         "CARTOONS_TEST_LIVE" => "FALSE",
         "CARTOONS_TEST_EXPLAIN" => "FALSE",
-        "CARTOONS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +97,6 @@ function cartoon_basic_setup($extra)
     if ($env["CARTOONS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["CARTOONS_APIKEY"],
             ],
             $extra ?? [],
         ]);

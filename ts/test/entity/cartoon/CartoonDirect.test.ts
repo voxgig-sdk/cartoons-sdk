@@ -79,14 +79,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'CARTOONS_TEST_CARTOON_ENTID': {},
     'CARTOONS_TEST_LIVE': 'FALSE',
-    'CARTOONS_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.CARTOONS_TEST_LIVE
 
   if (live) {
     const client = new CartoonsSDK({
-      apikey: env.CARTOONS_APIKEY,
     })
 
     let idmap: any = env['CARTOONS_TEST_CARTOON_ENTID']

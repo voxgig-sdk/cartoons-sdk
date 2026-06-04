@@ -93,14 +93,12 @@ func cartoonDirectSetup(mockres any) *cartoonDirectSetupResult {
 	env := envOverride(map[string]any{
 		"CARTOONS_TEST_CARTOON_ENTID": map[string]any{},
 		"CARTOONS_TEST_LIVE":    "FALSE",
-		"CARTOONS_APIKEY":       "NONE",
 	})
 
 	live := env["CARTOONS_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["CARTOONS_APIKEY"],
 		}
 		client := sdk.NewCartoonsSDK(mergedOpts)
 
