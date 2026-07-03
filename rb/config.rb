@@ -15,6 +15,9 @@ module CartoonsConfig
       },
       "options" => {
         "base" => "https://api.sampleapis.com",
+        "auth" => {
+          "prefix" => "Bearer",
+        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -26,75 +29,78 @@ module CartoonsConfig
         "cartoon" => {
           "fields" => [
             {
+              "active" => true,
               "name" => "creator",
               "req" => false,
               "type" => "`$ARRAY`",
-              "active" => true,
               "index$" => 0,
             },
             {
+              "active" => true,
               "name" => "episode",
               "req" => false,
               "type" => "`$INTEGER`",
-              "active" => true,
               "index$" => 1,
             },
             {
+              "active" => true,
               "name" => "genre",
               "req" => false,
               "type" => "`$ARRAY`",
-              "active" => true,
               "index$" => 2,
             },
             {
+              "active" => true,
               "name" => "id",
               "req" => false,
               "type" => "`$INTEGER`",
-              "active" => true,
               "index$" => 3,
             },
             {
+              "active" => true,
               "name" => "image",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 4,
             },
             {
+              "active" => true,
               "name" => "rating",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 5,
             },
             {
+              "active" => true,
               "name" => "runtime_in_minute",
               "req" => false,
               "type" => "`$INTEGER`",
-              "active" => true,
               "index$" => 6,
             },
             {
+              "active" => true,
               "name" => "title",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 7,
             },
             {
+              "active" => true,
               "name" => "year",
               "req" => false,
               "type" => "`$INTEGER`",
-              "active" => true,
               "index$" => 8,
             },
           ],
           "name" => "cartoon",
           "op" => {
             "list" => {
+              "input" => "data",
               "name" => "list",
               "points" => [
                 {
+                  "active" => true,
+                  "args" => {},
                   "method" => "GET",
                   "orig" => "/cartoons/cartoons2D",
                   "parts" => [
@@ -108,11 +114,11 @@ module CartoonsConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "active" => true,
-                  "args" => {},
                   "index$" => 0,
                 },
                 {
+                  "active" => true,
+                  "args" => {},
                   "method" => "GET",
                   "orig" => "/cartoons/cartoons3D",
                   "parts" => [
@@ -126,12 +132,9 @@ module CartoonsConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "active" => true,
-                  "args" => {},
                   "index$" => 1,
                 },
               ],
-              "input" => "data",
               "key$" => "list",
             },
           },

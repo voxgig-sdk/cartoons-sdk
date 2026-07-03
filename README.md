@@ -1,19 +1,8 @@
 # Cartoons SDK
 
-Browse a sample dataset of 2D and 3D cartoons with titles, descriptions, and sourced imagery
+Cartoons client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Cartoons
-
-The Cartoons API is one of the free practice datasets published on [SampleAPIs](https://sampleapis.com), a playground for experimenting with RESTful endpoints. It serves a small catalogue of cartoons split into 2D and 3D collections, each entry typically including a title, description and an image URL.
-
-What you can do with the API:
-
-- List 2D cartoons via `GET /cartoons/cartoons2D`.
-- List 3D cartoons via `GET /cartoons/cartoons3D`.
-
-The service is unauthenticated and CORS-enabled, so it can be called directly from browser code. As with the rest of SampleAPIs, the dataset is reset periodically and is intended for demos, tutorials and SDK testing rather than as a canonical source of cartoon information.
 
 ## Try it
 
@@ -47,29 +36,31 @@ gem install cartoons-sdk
 luarocks install cartoons-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { CartoonsSDK } from 'cartoons'
 
-const client = new CartoonsSDK({})
+const client = new CartoonsSDK({
+  apikey: process.env.CARTOONS_APIKEY,
+})
 
 // List all cartoons
 const cartoons = await client.Cartoon().list()
+console.log(cartoons.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -99,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Cartoon** | A cartoon entry from the SampleAPIs catalogue, served from `GET /cartoons/cartoons2D` and `GET /cartoons/cartoons3D` with title, description and image fields. | `/cartoons/cartoons2D` |
+| **Cartoon** |  | `/cartoons/cartoons2D` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -109,12 +100,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from cartoons_sdk import CartoonsSDK
 
-client = CartoonsSDK({})
+client = CartoonsSDK({
+    "apikey": os.environ.get("CARTOONS_APIKEY"),
+})
 
 # List all cartoons
-cartoons, err = client.Cartoon(None).list(None, None)
+cartoons, err = client.Cartoon().list()
+print(cartoons)
 ```
 
 ### PHP
@@ -123,10 +118,13 @@ cartoons, err = client.Cartoon(None).list(None, None)
 <?php
 require_once 'cartoons_sdk.php';
 
-$client = new CartoonsSDK([]);
+$client = new CartoonsSDK([
+    "apikey" => getenv("CARTOONS_APIKEY"),
+]);
 
 // List all cartoons
-[$cartoons, $err] = $client->Cartoon(null)->list(null, null);
+[$cartoons, $err] = $client->Cartoon()->list();
+print_r($cartoons);
 ```
 
 ### Golang
@@ -134,10 +132,13 @@ $client = new CartoonsSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/cartoons-sdk/go"
 
-client := sdk.NewCartoonsSDK(map[string]any{})
+client := sdk.NewCartoonsSDK(map[string]any{
+    "apikey": os.Getenv("CARTOONS_APIKEY"),
+})
 
 // List all cartoons
 cartoons, err := client.Cartoon(nil).List(nil, nil)
+fmt.Println(cartoons)
 ```
 
 ### Ruby
@@ -145,10 +146,13 @@ cartoons, err := client.Cartoon(nil).List(nil, nil)
 ```ruby
 require_relative "Cartoons_sdk"
 
-client = CartoonsSDK.new({})
+client = CartoonsSDK.new({
+  "apikey" => ENV["CARTOONS_APIKEY"],
+})
 
 # List all cartoons
-cartoons, err = client.Cartoon(nil).list(nil, nil)
+cartoons, err = client.Cartoon().list
+puts cartoons
 ```
 
 ### Lua
@@ -156,10 +160,13 @@ cartoons, err = client.Cartoon(nil).list(nil, nil)
 ```lua
 local sdk = require("cartoons_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("CARTOONS_APIKEY"),
+})
 
 -- List all cartoons
-local cartoons, err = client:Cartoon(nil):list(nil, nil)
+local cartoons, err = client:Cartoon():list()
+print(cartoons)
 ```
 
 ## Unit testing in offline mode
@@ -178,25 +185,21 @@ const result = await client.Cartoon().load({ id: 'test01' })
 ### Python
 
 ```python
-client = CartoonsSDK.test(None, None)
-result, err = client.Cartoon(None).load(
-    {"id": "test01"}, None
-)
+client = CartoonsSDK.test()
+result, err = client.Cartoon().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = CartoonsSDK::test(null, null);
-[$result, $err] = $client->Cartoon(null)->load(
-    ["id" => "test01"], null
-);
+$client = CartoonsSDK::test();
+[$result, $err] = $client->Cartoon()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Cartoon(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -205,19 +208,15 @@ result, err := client.Cartoon(nil).Load(
 ### Ruby
 
 ```ruby
-client = CartoonsSDK.test(nil, nil)
-result, err = client.Cartoon(nil).load(
-  { "id" => "test01" }, nil
-)
+client = CartoonsSDK.test
+result, err = client.Cartoon().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Cartoon(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Cartoon():load({ id = "test01" })
 ```
 
 ## How it works
@@ -321,15 +320,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Cartoons
-
-- Upstream: [https://sampleapis.com/api-list/cartoons](https://sampleapis.com/api-list/cartoons)
-
-- Data is published by [SampleAPIs](https://sampleapis.com) for educational and prototyping use only.
-- SampleAPIs states the data is not owned by them and may be reset on a regular basis.
-- No explicit licence is declared for the cartoon entries or accompanying images; treat as unsuitable for production reuse.
-- Verify any image attribution independently before redistribution.
 
 ---
 
