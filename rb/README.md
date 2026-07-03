@@ -10,13 +10,13 @@ The Ruby SDK for the Cartoons API — an entity-oriented client using idiomatic 
 
 ## Install
 ```bash
-gem install cartoons-sdk
+gem install voxgig-sdk-cartoons
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "cartoons-sdk"
+gem "voxgig-sdk-cartoons"
 ```
 
 Then run:

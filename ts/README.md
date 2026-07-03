@@ -10,7 +10,7 @@ The TypeScript SDK for the Cartoons API — a type-safe, entity-oriented client 
 
 ## Install
 ```bash
-npm install cartoons
+npm install @voxgig-sdk/cartoons
 ```
 ## Tutorial: your first API call
 

@@ -10,7 +10,7 @@ The PHP SDK for the Cartoons API — an entity-oriented client using PHP convent
 
 ## Install
 ```bash
-composer require voxgig/cartoons-sdk
+composer require voxgig-sdk/cartoons
 ```
 
 

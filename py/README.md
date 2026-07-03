@@ -10,7 +10,7 @@ The Python SDK for the Cartoons API — an entity-oriented client following Pyth
 
 ## Install
 ```bash
-pip install cartoons-sdk
+pip install voxgig-sdk-cartoons
 ```
 
 Or install from source:

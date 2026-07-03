@@ -8,12 +8,14 @@ source = {
   dir = "cartoons-sdk/lua"
 }
 description = {
-  summary = "Cartoons SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Cartoons public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/cartoons-sdk",
+  issues_url = "https://github.com/voxgig-sdk/cartoons-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "cartoons" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {
