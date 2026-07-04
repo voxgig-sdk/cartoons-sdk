@@ -245,6 +245,9 @@ func (sdk *CartoonsSDK) Direct(fetchargs map[string]any) (map[string]any, error)
 }
 
 
+// Cartoon returns a Cartoon entity bound to this client.
+// Idiomatic usage: client.Cartoon(nil).List(nil, nil) or
+// client.Cartoon(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *CartoonsSDK) Cartoon(data map[string]any) CartoonsEntity {
 	return NewCartoonEntityFunc(sdk, data)
 }

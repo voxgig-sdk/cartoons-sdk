@@ -2,6 +2,8 @@
 
 import { CartoonEntity } from './entity/CartoonEntity'
 
+export type * from './CartoonsTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class CartoonsSDK {
 
 
 
+  _cartoon?: CartoonEntity
+
+  // Idiomatic facade: `client.cartoon.list()` / `client.cartoon.load({ id })`.
+  get cartoon(): CartoonEntity {
+    return (this._cartoon ??= new CartoonEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.cartoon` instead. */
   Cartoon(data?: any) {
     const self = this
     return new CartoonEntity(self,data)

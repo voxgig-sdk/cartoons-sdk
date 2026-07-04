@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:cartoon():list() / client:cartoon():load({ id = ... })
+function CartoonsSDK:cartoon(data)
+  local EntityMod = require("entity.cartoon_entity")
+  if data == nil then
+    if self._cartoon == nil then
+      self._cartoon = EntityMod.new(self, nil)
+    end
+    return self._cartoon
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:cartoon() instead.
 function CartoonsSDK:Cartoon(data)
   local EntityMod = require("entity.cartoon_entity")
   return EntityMod.new(self, data)

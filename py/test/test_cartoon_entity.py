@@ -50,8 +50,7 @@ class TestCartoonEntity:
         cartoon_ref01_ent = client.Cartoon(None)
         cartoon_ref01_match = {}
 
-        cartoon_ref01_list_result, err = cartoon_ref01_ent.list(cartoon_ref01_match, None)
-        assert err is None
+        cartoon_ref01_list_result = cartoon_ref01_ent.list(cartoon_ref01_match, None)
         assert isinstance(cartoon_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _cartoon_basic_setup(extra):
         "CARTOONS_TEST_CARTOON_ENTID": idmap,
         "CARTOONS_TEST_LIVE": "FALSE",
         "CARTOONS_TEST_EXPLAIN": "FALSE",
-        "CARTOONS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _cartoon_basic_setup(extra):
     if env.get("CARTOONS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("CARTOONS_APIKEY"),
             },
             extra or {},
         ])

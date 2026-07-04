@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Cartoon,
+  CartoonListMatch,
+} from '../CartoonsTypes'
 
 // TODO: needs Entity superclass
-class CartoonEntity extends CartoonsEntityBase {
+class CartoonEntity extends CartoonsEntityBase<Cartoon> {
 
   constructor(client: CartoonsSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class CartoonEntity extends CartoonsEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: CartoonListMatch, ctrl?: Control): Promise<Cartoon[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class CartoonEntity extends CartoonsEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Cartoon[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

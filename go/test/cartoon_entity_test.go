@@ -119,7 +119,6 @@ func cartoonBasicSetup(extra map[string]any) *entityTestSetup {
 		"CARTOONS_TEST_CARTOON_ENTID": idmap,
 		"CARTOONS_TEST_LIVE":      "FALSE",
 		"CARTOONS_TEST_EXPLAIN":   "FALSE",
-		"CARTOONS_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["CARTOONS_TEST_CARTOON_ENTID"])
@@ -130,7 +129,6 @@ func cartoonBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["CARTOONS_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["CARTOONS_APIKEY"],
 			},
 			extra,
 		})

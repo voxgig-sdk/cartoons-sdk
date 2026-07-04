@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch CartoonListMatch
+---@param ctrl? table
+---@return Cartoon[]
+---@return string? err
 function CartoonEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

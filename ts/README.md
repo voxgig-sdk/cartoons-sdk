@@ -9,9 +9,12 @@ The TypeScript SDK for the Cartoons API — a type-safe, entity-oriented client 
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/cartoons
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/cartoons-sdk/releases](https://github.com/voxgig-sdk/cartoons-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { CartoonsSDK } from 'cartoons'
+import { CartoonsSDK } from '@voxgig-sdk/cartoons'
 
-const client = new CartoonsSDK({
-  apikey: process.env.CARTOONS_APIKEY,
-})
+const client = new CartoonsSDK()
 ```
 
 ### 2. List cartoons
 
 ```ts
-const result = await client.Cartoon().list()
+const result = await client.cartoon.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -81,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = CartoonsSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.cartoon.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -89,7 +90,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new CartoonsSDK({ apikey: '...' })
+const client = new CartoonsSDK()
 const testClient = client.tester()
 ```
 
@@ -98,7 +99,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.cartoon
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -125,7 +126,6 @@ const logger = {
 }
 
 const client = new CartoonsSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -136,7 +136,6 @@ Create a `.env.local` file at the project root:
 
 ```
 CARTOONS_TEST_LIVE=TRUE
-CARTOONS_APIKEY=<your-key>
 ```
 
 Then run:
@@ -154,7 +153,6 @@ cd ts && npm test
 
 ```ts
 new CartoonsSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -165,7 +163,6 @@ new CartoonsSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -276,7 +273,7 @@ API path: `/cartoons/cartoons2D`
 
 ### Cartoon
 
-Create an instance: `const cartoon = client.Cartoon()`
+Create an instance: `const cartoon = client.cartoon`
 
 #### Operations
 
@@ -301,7 +298,7 @@ Create an instance: `const cartoon = client.Cartoon()`
 #### Example: List
 
 ```ts
-const cartoons = await client.Cartoon().list()
+const cartoons = await client.cartoon.list()
 ```
 
 
@@ -362,7 +359,7 @@ cartoons/
 Import the SDK from the package root:
 
 ```ts
-import { CartoonsSDK } from 'cartoons'
+import { CartoonsSDK } from '@voxgig-sdk/cartoons'
 ```
 
 ### Entity state
@@ -372,11 +369,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const cartoon = client.cartoon
+await cartoon.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// cartoon.data() now returns the loaded cartoon data
+// cartoon.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

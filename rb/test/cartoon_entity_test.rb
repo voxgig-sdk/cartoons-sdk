@@ -43,8 +43,7 @@ class CartoonEntityTest < Minitest::Test
     cartoon_ref01_ent = client.Cartoon(nil)
     cartoon_ref01_match = {}
 
-    cartoon_ref01_list_result, err = cartoon_ref01_ent.list(cartoon_ref01_match, nil)
-    assert_nil err
+    cartoon_ref01_list_result = cartoon_ref01_ent.list(cartoon_ref01_match, nil)
     assert cartoon_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def cartoon_basic_setup(extra)
     "CARTOONS_TEST_CARTOON_ENTID" => idmap,
     "CARTOONS_TEST_LIVE" => "FALSE",
     "CARTOONS_TEST_EXPLAIN" => "FALSE",
-    "CARTOONS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def cartoon_basic_setup(extra)
   if env["CARTOONS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["CARTOONS_APIKEY"],
       },
       extra || {},
     ])

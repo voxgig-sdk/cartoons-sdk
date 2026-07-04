@@ -63,14 +63,12 @@ function cartoon_direct_setup(mockres)
   local env = runner.env_override({
     ["CARTOONS_TEST_CARTOON_ENTID"] = {},
     ["CARTOONS_TEST_LIVE"] = "FALSE",
-    ["CARTOONS_APIKEY"] = "NONE",
   })
 
   local live = env["CARTOONS_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["CARTOONS_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {
