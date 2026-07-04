@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## CartoonEntity
 
 ```lua
-local cartoon = client:cartoon(nil)
+local cartoon = client:Cartoon(nil)
 ```
 
 ### Fields
@@ -107,7 +107,7 @@ local cartoon = client:cartoon(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:cartoon():list()
+local results, err = client:Cartoon():list()
 ```
 
 ### Common Methods

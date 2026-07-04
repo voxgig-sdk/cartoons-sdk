@@ -220,25 +220,15 @@ class CartoonsSDK:
         }
 
 
-    @property
-    def cartoon(self):
-        """Idiomatic facade: client.cartoon.list() / client.cartoon.load({"id": ...})."""
-        from entity.cartoon_entity import CartoonEntity
-        cached = getattr(self, "_cartoon", None)
-        if cached is None:
-            cached = CartoonEntity(self, None)
-            self._cartoon = cached
-        return cached
-
-    def Cartoon(self, data=None):
-        # Deprecated: use client.cartoon instead.
+    def Cartoon(self, data=None) -> "CartoonEntity":
+        """Entity factory: client.Cartoon().list({}) / client.Cartoon().load({"id": ...})."""
         from entity.cartoon_entity import CartoonEntity
         return CartoonEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "CartoonsSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class CartoonsSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.cartoon_entity import CartoonEntity

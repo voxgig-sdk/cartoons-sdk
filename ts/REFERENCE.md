@@ -109,7 +109,7 @@ Alias for `CartoonsSDK.test()`.
 ## CartoonEntity
 
 ```ts
-const cartoon = client.cartoon
+const cartoon = client.Cartoon()
 ```
 
 ### Fields
@@ -133,7 +133,7 @@ const cartoon = client.cartoon
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.cartoon.list()
+const results = await client.Cartoon().list()
 ```
 
 ### Common Methods

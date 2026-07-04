@@ -233,10 +233,10 @@ class CartoonsSDK
 
     private $_cartoon = null;
 
-    // Idiomatic facade: $client->cartoon()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Cartoon() (PHP method
-    // names are case-insensitive).
-    public function cartoon($data = null)
+    // Canonical facade: $client->Cartoon()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->cartoon()
+    // resolves here too.
+    public function Cartoon($data = null)
     {
         require_once __DIR__ . '/entity/cartoon_entity.php';
         if ($data === null) {

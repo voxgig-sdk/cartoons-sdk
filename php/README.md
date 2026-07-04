@@ -29,18 +29,16 @@ require_once 'cartoons_sdk.php';
 $client = new CartoonsSDK();
 ```
 
-### 2. List cartoons
+### 2. List cartoon records
 
 ```php
 try {
-    $result = $client->cartoon()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Cartoon records — iterate directly.
+    $cartoons = $client->Cartoon()->list();
+    foreach ($cartoons as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -86,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = CartoonsSDK::test();
+$client = CartoonsSDK::test([
+    "entity" => ["cartoon" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->cartoon()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$cartoon = $client->Cartoon()->load(["id" => "test01"]);
+print_r($cartoon);
 ```
 
 ### Use a custom fetch function
@@ -236,7 +238,7 @@ API path: `/cartoons/cartoons2D`
 
 ### Cartoon
 
-Create an instance: `const cartoon = client.cartoon`
+Create an instance: `$cartoon = $client->Cartoon();`
 
 #### Operations
 
@@ -260,8 +262,9 @@ Create an instance: `const cartoon = client.cartoon`
 
 #### Example: List
 
-```ts
-const cartoons = await client.cartoon.list()
+```php
+// list() returns an array of Cartoon records (throws on error).
+$cartoons = $client->Cartoon()->list();
 ```
 
 
@@ -336,7 +339,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$cartoon = $client->cartoon();
+$cartoon = $client->Cartoon();
 $cartoon->load(["id" => "example_id"]);
 
 // $cartoon->dataGet() now returns the loaded cartoon data

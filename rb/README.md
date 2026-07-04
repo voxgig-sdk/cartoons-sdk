@@ -28,16 +28,14 @@ require_relative "Cartoons_sdk"
 client = CartoonsSDK.new
 ```
 
-### 2. List cartoons
+### 2. List cartoon records
 
 ```ruby
 begin
-  result = client.cartoon.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Cartoon records — iterate directly.
+  cartoons = client.Cartoon.list
+  cartoons.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -85,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = CartoonsSDK.test
+client = CartoonsSDK.test({
+  "entity" => { "cartoon" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.cartoon.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+cartoon = client.Cartoon.load({ "id" => "test01" })
+puts cartoon
 ```
 
 ### Use a custom fetch function
@@ -231,7 +233,7 @@ API path: `/cartoons/cartoons2D`
 
 ### Cartoon
 
-Create an instance: `const cartoon = client.cartoon`
+Create an instance: `cartoon = client.Cartoon`
 
 #### Operations
 
@@ -255,8 +257,9 @@ Create an instance: `const cartoon = client.cartoon`
 
 #### Example: List
 
-```ts
-const cartoons = await client.cartoon.list()
+```ruby
+# list returns an Array of Cartoon records (raises on error).
+cartoons = client.Cartoon.list
 ```
 
 
@@ -331,7 +334,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-cartoon = client.cartoon
+cartoon = client.Cartoon
 cartoon.load({ "id" => "example_id" })
 
 # cartoon.data_get now returns the loaded cartoon data

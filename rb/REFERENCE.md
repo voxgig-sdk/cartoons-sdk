@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## CartoonEntity
 
 ```ruby
-cartoon = client.cartoon
+cartoon = client.Cartoon
 ```
 
 ### Fields
@@ -110,7 +110,7 @@ cartoon = client.cartoon
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.cartoon.list(nil)
+results = client.Cartoon.list(nil)
 ```
 
 ### Common Methods

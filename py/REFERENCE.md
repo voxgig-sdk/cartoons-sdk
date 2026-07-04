@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## CartoonEntity
 
 ```python
-cartoon = client.cartoon
+cartoon = client.Cartoon()
 ```
 
 ### Fields
@@ -104,7 +104,9 @@ cartoon = client.cartoon
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.cartoon.list({})
+results = client.Cartoon().list({})
+for cartoon in results:
+    print(cartoon)
 ```
 
 ### Common Methods

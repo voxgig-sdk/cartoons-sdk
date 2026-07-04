@@ -208,13 +208,7 @@ class CartoonsSDK
   end
 
 
-  # Idiomatic facade: client.cartoon.list / client.cartoon.load({ "id" => ... })
-  def cartoon
-    require_relative 'entity/cartoon_entity'
-    @cartoon ||= CartoonEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.cartoon instead.
+  # Canonical facade: client.Cartoon.list / client.Cartoon.load({ "id" => ... })
   def Cartoon(data = nil)
     require_relative 'entity/cartoon_entity'
     CartoonEntity.new(self, data)

@@ -31,14 +31,16 @@ from cartoons_sdk import CartoonsSDK
 client = CartoonsSDK()
 ```
 
-### 2. List cartoons
+### 2. List cartoon records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.cartoon.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    cartoons = client.Cartoon().list({})
+    for cartoon in cartoons:
+        print(cartoon)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -86,8 +88,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = CartoonsSDK.test()
 
-result = client.cartoon.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+cartoon = client.Cartoon().load({"id": "test01"})
+# cartoon contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -228,7 +231,7 @@ API path: `/cartoons/cartoons2D`
 
 ### Cartoon
 
-Create an instance: `const cartoon = client.cartoon`
+Create an instance: `cartoon = client.Cartoon()`
 
 #### Operations
 
@@ -252,8 +255,8 @@ Create an instance: `const cartoon = client.cartoon`
 
 #### Example: List
 
-```ts
-const cartoons = await client.cartoon.list()
+```python
+cartoons = client.Cartoon().list({})
 ```
 
 
@@ -327,7 +330,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-cartoon = client.cartoon
+cartoon = client.Cartoon()
 cartoon.load({"id": "example_id"})
 
 # cartoon.data_get() now returns the loaded cartoon data

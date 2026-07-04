@@ -26,9 +26,11 @@ import { CartoonsSDK } from '@voxgig-sdk/cartoons'
 
 const client = new CartoonsSDK()
 
-// List all cartoons
-const cartoons = await client.cartoon.list()
-console.log(cartoons.data)
+// List all cartoons (returns Cartoon[])
+const cartoons = await client.Cartoon().list()
+for (const cartoon of cartoons) {
+  console.log(cartoon)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -83,9 +85,10 @@ from cartoons_sdk import CartoonsSDK
 
 client = CartoonsSDK()
 
-# List all cartoons
-cartoons = client.cartoon.list()
-print(cartoons)
+# List all cartoons (returns a list, raises on error)
+cartoons = client.Cartoon().list({})
+for cartoon in cartoons:
+    print(cartoon)
 ```
 
 ### PHP
@@ -96,8 +99,8 @@ require_once 'cartoons_sdk.php';
 
 $client = new CartoonsSDK();
 
-// List all cartoons (throws on error)
-$cartoons = $client->cartoon()->list();
+// List all cartoons (returns an array; throws on error)
+$cartoons = $client->Cartoon()->list();
 print_r($cartoons);
 ```
 
@@ -120,8 +123,8 @@ require_relative "Cartoons_sdk"
 
 client = CartoonsSDK.new
 
-# List all cartoons
-cartoons = client.cartoon.list
+# List all cartoons (returns an Array; raises on error)
+cartoons = client.Cartoon.list
 puts cartoons
 ```
 
@@ -133,7 +136,7 @@ local sdk = require("cartoons_sdk")
 local client = sdk.new()
 
 -- List all cartoons
-local cartoons, err = client:cartoon():list()
+local cartoons, err = client:Cartoon():list()
 print(cartoons)
 ```
 
@@ -146,22 +149,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = CartoonsSDK.test()
-const result = await client.cartoon.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const cartoon = await client.Cartoon().load({ id: 1 })
+// cartoon is a bare Cartoon populated with mock data
+console.log(cartoon)
 ```
 
 ### Python
 
 ```python
 client = CartoonsSDK.test()
-result = client.cartoon.load({"id": "test01"})
+cartoon = client.Cartoon().load({"id": "test01"})
+print(cartoon)
 ```
 
 ### PHP
 
 ```php
-$client = CartoonsSDK::test();
-$result = $client->cartoon()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = CartoonsSDK::test([
+    "entity" => ["cartoon" => ["test01" => ["id" => "test01"]]],
+]);
+$cartoon = $client->Cartoon()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -176,15 +184,18 @@ result, err := client.Cartoon(nil).Load(
 ### Ruby
 
 ```ruby
-client = CartoonsSDK.test
-result = client.cartoon.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = CartoonsSDK.test({
+  "entity" => { "cartoon" => { "test01" => { "id" => "test01" } } },
+})
+cartoon = client.Cartoon.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:cartoon():load({ id = "test01" })
+local result, err = client:Cartoon():load({ id = "test01" })
 ```
 
 ## How it works
@@ -232,6 +243,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:cartoon():list() / client:cartoon():load({ id = ... })
-function CartoonsSDK:cartoon(data)
+-- Idiomatic facade: client:Cartoon():list() / client:Cartoon():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function CartoonsSDK:Cartoon(data)
   local EntityMod = require("entity.cartoon_entity")
   if data == nil then
     if self._cartoon == nil then
@@ -253,12 +254,6 @@ function CartoonsSDK:cartoon(data)
     end
     return self._cartoon
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:cartoon() instead.
-function CartoonsSDK:Cartoon(data)
-  local EntityMod = require("entity.cartoon_entity")
   return EntityMod.new(self, data)
 end
 

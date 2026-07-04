@@ -85,7 +85,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## CartoonEntity
 
 ```php
-$cartoon = $client->cartoon();
+$cartoon = $client->Cartoon();
 ```
 
 ### Fields
@@ -109,7 +109,7 @@ $cartoon = $client->cartoon();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->cartoon()->list([]);
+$results = $client->Cartoon()->list([]);
 ```
 
 ### Common Methods
