@@ -21,8 +21,7 @@ type Cartoon struct {
 	Year *int `json:"year,omitempty"`
 }
 
-// CartoonListMatch mirrors the cartoon fields as an all-optional match
-// filter (Go analog of Partial<Cartoon>).
+// CartoonListMatch is the typed request payload for Cartoon.ListTyped.
 type CartoonListMatch struct {
 	Creator *[]any `json:"creator,omitempty"`
 	Episode *int `json:"episode,omitempty"`

@@ -26,7 +26,7 @@ class Cartoon
     public ?int $year = null;
 }
 
-/** Match filter for Cartoon#list (any subset of Cartoon fields). */
+/** Request payload for Cartoon#list. */
 class CartoonListMatch
 {
     public ?array $creator = null;

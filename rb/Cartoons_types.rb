@@ -49,7 +49,7 @@ Cartoon = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Cartoon#list (any subset of Cartoon fields).
+# Request payload for Cartoon#list.
 #
 # @!attribute [rw] creator
 #   @return [Array, nil]

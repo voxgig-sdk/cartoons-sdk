@@ -97,15 +97,15 @@ cartoon := client.Cartoon(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `creator` | ``$ARRAY`` | No |  |
-| `episode` | ``$INTEGER`` | No |  |
-| `genre` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `rating` | ``$STRING`` | No |  |
-| `runtime_in_minute` | ``$INTEGER`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `creator` | `[]any` | No |  |
+| `episode` | `int` | No |  |
+| `genre` | `[]any` | No |  |
+| `id` | `int` | No |  |
+| `image` | `string` | No |  |
+| `rating` | `string` | No |  |
+| `runtime_in_minute` | `int` | No |  |
+| `title` | `string` | No |  |
+| `year` | `int` | No |  |
 
 ### Operations
 

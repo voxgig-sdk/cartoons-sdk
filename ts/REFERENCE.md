@@ -116,15 +116,15 @@ const cartoon = client.Cartoon()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `creator` | ``$ARRAY`` | No |  |
-| `episode` | ``$INTEGER`` | No |  |
-| `genre` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `rating` | ``$STRING`` | No |  |
-| `runtime_in_minute` | ``$INTEGER`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `creator` | `any[]` | No |  |
+| `episode` | `number` | No |  |
+| `genre` | `any[]` | No |  |
+| `id` | `number` | No |  |
+| `image` | `string` | No |  |
+| `rating` | `string` | No |  |
+| `runtime_in_minute` | `number` | No |  |
+| `title` | `string` | No |  |
+| `year` | `number` | No |  |
 
 ### Operations
 

@@ -90,15 +90,15 @@ local cartoon = client:Cartoon(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `creator` | ``$ARRAY`` | No |  |
-| `episode` | ``$INTEGER`` | No |  |
-| `genre` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `rating` | ``$STRING`` | No |  |
-| `runtime_in_minute` | ``$INTEGER`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `creator` | `table` | No |  |
+| `episode` | `number` | No |  |
+| `genre` | `table` | No |  |
+| `id` | `number` | No |  |
+| `image` | `string` | No |  |
+| `rating` | `string` | No |  |
+| `runtime_in_minute` | `number` | No |  |
+| `title` | `string` | No |  |
+| `year` | `number` | No |  |
 
 ### Operations
 

@@ -221,7 +221,7 @@ class CartoonsSDK:
 
 
     def Cartoon(self, data=None) -> "CartoonEntity":
-        """Entity factory: client.Cartoon().list({}) / client.Cartoon().load({"id": ...})."""
+        """Entity factory: client.Cartoon().list() / client.Cartoon().load({"id": ...})."""
         from entity.cartoon_entity import CartoonEntity
         return CartoonEntity(self, data)
 

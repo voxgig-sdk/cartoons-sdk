@@ -87,24 +87,24 @@ cartoon = client.Cartoon()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `creator` | ``$ARRAY`` | No |  |
-| `episode` | ``$INTEGER`` | No |  |
-| `genre` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `rating` | ``$STRING`` | No |  |
-| `runtime_in_minute` | ``$INTEGER`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `creator` | `list` | No |  |
+| `episode` | `int` | No |  |
+| `genre` | `list` | No |  |
+| `id` | `int` | No |  |
+| `image` | `str` | No |  |
+| `rating` | `str` | No |  |
+| `runtime_in_minute` | `int` | No |  |
+| `title` | `str` | No |  |
+| `year` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Cartoon().list({})
+results = client.Cartoon().list()
 for cartoon in results:
     print(cartoon)
 ```

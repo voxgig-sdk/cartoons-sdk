@@ -8,7 +8,7 @@ Complete API reference for the Cartoons Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'cartoons_sdk'
+require_relative 'Cartoons_sdk'
 
 client = CartoonsSDK.new(options)
 ```
@@ -93,24 +93,24 @@ cartoon = client.Cartoon
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `creator` | ``$ARRAY`` | No |  |
-| `episode` | ``$INTEGER`` | No |  |
-| `genre` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `rating` | ``$STRING`` | No |  |
-| `runtime_in_minute` | ``$INTEGER`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `creator` | `Array` | No |  |
+| `episode` | `Integer` | No |  |
+| `genre` | `Array` | No |  |
+| `id` | `Integer` | No |  |
+| `image` | `String` | No |  |
+| `rating` | `String` | No |  |
+| `runtime_in_minute` | `Integer` | No |  |
+| `title` | `String` | No |  |
+| `year` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Cartoon.list(nil)
+results = client.Cartoon.list
 ```
 
 ### Common Methods

@@ -17,5 +17,15 @@ export interface Cartoon {
   year?: number
 }
 
-export type CartoonListMatch = Partial<Cartoon>
+export interface CartoonListMatch {
+  creator?: any[]
+  episode?: number
+  genre?: any[]
+  id?: number
+  image?: string
+  rating?: string
+  runtime_in_minute?: number
+  title?: string
+  year?: number
+}
 
