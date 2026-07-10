@@ -16,9 +16,9 @@ main: {
           url: "https://api.sampleapis.com"
         }
       ]
+      summary: "If cartoons is what you like then boy do we have a full list of all the cartoons from the past and present and all their details including a amazingly sourced image to showcase"
       title: "Cartoons"
       version: "1.0.0"
+      website: "https://sampleapis.com"
     }
   }
-}
-
