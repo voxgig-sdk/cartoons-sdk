@@ -27,7 +27,20 @@ func main() {
 }
 
 func run(args []string, in io.Reader, out, errOut io.Writer) int {
-	client := sdk.NewCartoonsSDK(nil)
+	// Configure from the environment: CARTOONS_APIKEY carries the API key and
+	// CARTOONS_BASE optionally overrides the API base URL (e.g. production).
+	// Both injectable by a secrets vault. Unset -> nil config defaults.
+	var opts map[string]any
+	if apikey := os.Getenv("CARTOONS_APIKEY"); apikey != "" {
+		opts = map[string]any{"apikey": apikey}
+	}
+	if base := os.Getenv("CARTOONS_BASE"); base != "" {
+		if opts == nil {
+			opts = map[string]any{}
+		}
+		opts["base"] = base
+	}
+	client := sdk.NewCartoonsSDK(opts)
 
 	r, err := eng.NewRegistry()
 	if err != nil {
