@@ -1,4 +1,4 @@
--- ProjectName SDK configuration
+-- Cartoons SDK configuration
 
 local function make_config()
   return {
