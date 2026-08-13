@@ -93,12 +93,12 @@ $cartoon = $client->Cartoon();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `creator` | `array` | No |  |
-| `episode` | `int` | No |  |
+| `episodes` | `int` | No |  |
 | `genre` | `array` | No |  |
 | `id` | `int` | No |  |
 | `image` | `string` | No |  |
 | `rating` | `string` | No |  |
-| `runtime_in_minute` | `int` | No |  |
+| `runtime_in_minutes` | `int` | No |  |
 | `title` | `string` | No |  |
 | `year` | `int` | No |  |
 

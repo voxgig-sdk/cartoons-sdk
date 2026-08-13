@@ -63,7 +63,7 @@ describe('CartoonEntity', async () => {
     const cartoon_ref01_ent = client.Cartoon()
     const cartoon_ref01_match: any = {}
 
-    const cartoon_ref01_list = await cartoon_ref01_ent.list(cartoon_ref01_match)
+    const cartoon_ref01_list = (await cartoon_ref01_ent.list(cartoon_ref01_match)).map((e: any) => e.data())
 
 
   })

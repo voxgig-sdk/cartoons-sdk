@@ -99,12 +99,12 @@ fmt.Println(cartoon.GetName()) // "cartoon"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `creator` | `[]any` | No |  |
-| `episode` | `int` | No |  |
+| `episodes` | `int` | No |  |
 | `genre` | `[]any` | No |  |
 | `id` | `int` | No |  |
 | `image` | `string` | No |  |
 | `rating` | `string` | No |  |
-| `runtime_in_minute` | `int` | No |  |
+| `runtime_in_minutes` | `int` | No |  |
 | `title` | `string` | No |  |
 | `year` | `int` | No |  |
 

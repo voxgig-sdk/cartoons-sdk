@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ CartoonsUtility.registrar = ->(u) {
   u.prepare_params = CartoonsUtilities::PrepareParams
   u.prepare_path = CartoonsUtilities::PreparePath
   u.prepare_query = CartoonsUtilities::PrepareQuery
+  u.graphql_body = CartoonsUtilities::GraphqlBody
+  u.graphql_errors = CartoonsUtilities::GraphqlErrors
   u.result_basic = CartoonsUtilities::ResultBasic
   u.result_body = CartoonsUtilities::ResultBody
   u.result_headers = CartoonsUtilities::ResultHeaders

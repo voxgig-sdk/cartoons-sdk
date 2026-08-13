@@ -16,12 +16,12 @@ declare(strict_types=1);
 class Cartoon
 {
     public ?array $creator = null;
-    public ?int $episode = null;
+    public ?int $episodes = null;
     public ?array $genre = null;
     public ?int $id = null;
     public ?string $image = null;
     public ?string $rating = null;
-    public ?int $runtime_in_minute = null;
+    public ?int $runtime_in_minutes = null;
     public ?string $title = null;
     public ?int $year = null;
 }
@@ -30,12 +30,12 @@ class Cartoon
 class CartoonListMatch
 {
     public ?array $creator = null;
-    public ?int $episode = null;
+    public ?int $episodes = null;
     public ?array $genre = null;
     public ?int $id = null;
     public ?string $image = null;
     public ?string $rating = null;
-    public ?int $runtime_in_minute = null;
+    public ?int $runtime_in_minutes = null;
     public ?string $title = null;
     public ?int $year = null;
 }

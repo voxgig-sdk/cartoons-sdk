@@ -8,23 +8,23 @@
 
 ---@class Cartoon
 ---@field creator? table
----@field episode? number
+---@field episodes? number
 ---@field genre? table
 ---@field id? number
 ---@field image? string
 ---@field rating? string
----@field runtime_in_minute? number
+---@field runtime_in_minutes? number
 ---@field title? string
 ---@field year? number
 
 ---@class CartoonListMatch
 ---@field creator? table
----@field episode? number
+---@field episodes? number
 ---@field genre? table
 ---@field id? number
 ---@field image? string
 ---@field rating? string
----@field runtime_in_minute? number
+---@field runtime_in_minutes? number
 ---@field title? string
 ---@field year? number
 

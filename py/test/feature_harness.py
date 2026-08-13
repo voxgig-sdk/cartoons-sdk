@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import CartoonsControl
-from core.error import CartoonsError
-from core.result import CartoonsResult
-from core.spec import CartoonsSpec
+from cartoons_sdk.config import make_config
+from cartoons_sdk.features import _make_feature
+from cartoons_sdk.core.control import CartoonsControl
+from cartoons_sdk.core.error import CartoonsError
+from cartoons_sdk.core.result import CartoonsResult
+from cartoons_sdk.core.spec import CartoonsSpec
 
 
 # True when this SDK was generated with the named feature.

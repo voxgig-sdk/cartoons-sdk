@@ -13,7 +13,7 @@
 # @!attribute [rw] creator
 #   @return [Array, nil]
 #
-# @!attribute [rw] episode
+# @!attribute [rw] episodes
 #   @return [Integer, nil]
 #
 # @!attribute [rw] genre
@@ -28,7 +28,7 @@
 # @!attribute [rw] rating
 #   @return [String, nil]
 #
-# @!attribute [rw] runtime_in_minute
+# @!attribute [rw] runtime_in_minutes
 #   @return [Integer, nil]
 #
 # @!attribute [rw] title
@@ -38,12 +38,12 @@
 #   @return [Integer, nil]
 Cartoon = Struct.new(
   :creator,
-  :episode,
+  :episodes,
   :genre,
   :id,
   :image,
   :rating,
-  :runtime_in_minute,
+  :runtime_in_minutes,
   :title,
   :year,
   keyword_init: true
@@ -54,7 +54,7 @@ Cartoon = Struct.new(
 # @!attribute [rw] creator
 #   @return [Array, nil]
 #
-# @!attribute [rw] episode
+# @!attribute [rw] episodes
 #   @return [Integer, nil]
 #
 # @!attribute [rw] genre
@@ -69,7 +69,7 @@ Cartoon = Struct.new(
 # @!attribute [rw] rating
 #   @return [String, nil]
 #
-# @!attribute [rw] runtime_in_minute
+# @!attribute [rw] runtime_in_minutes
 #   @return [Integer, nil]
 #
 # @!attribute [rw] title
@@ -79,12 +79,12 @@ Cartoon = Struct.new(
 #   @return [Integer, nil]
 CartoonListMatch = Struct.new(
   :creator,
-  :episode,
+  :episodes,
   :genre,
   :id,
   :image,
   :rating,
-  :runtime_in_minute,
+  :runtime_in_minutes,
   :title,
   :year,
   keyword_init: true

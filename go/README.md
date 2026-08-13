@@ -261,12 +261,12 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"creator"` |  |
-| `"episode"` |  |
+| `"episodes"` |  |
 | `"genre"` |  |
 | `"id"` |  |
 | `"image"` |  |
 | `"rating"` |  |
-| `"runtime_in_minute"` |  |
+| `"runtime_in_minutes"` |  |
 | `"title"` |  |
 | `"year"` |  |
 
@@ -294,12 +294,12 @@ Create an instance: `cartoon := client.Cartoon(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `creator` | `[]any` |  |
-| `episode` | `int` |  |
+| `episodes` | `int` |  |
 | `genre` | `[]any` |  |
 | `id` | `int` |  |
 | `image` | `string` |  |
 | `rating` | `string` |  |
-| `runtime_in_minute` | `int` |  |
+| `runtime_in_minutes` | `int` |  |
 | `title` | `string` |  |
 | `year` | `int` |  |
 

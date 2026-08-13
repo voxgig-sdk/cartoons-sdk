@@ -39,7 +39,7 @@ class CartoonsConfig
             ],
             [
               'active' => true,
-              'name' => 'episode',
+              'name' => 'episodes',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 1,
@@ -74,7 +74,7 @@ class CartoonsConfig
             ],
             [
               'active' => true,
-              'name' => 'runtime_in_minute',
+              'name' => 'runtime_in_minutes',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 6,
@@ -103,6 +103,7 @@ class CartoonsConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/cartoons/cartoons2D',
                   'parts' => [
@@ -121,6 +122,7 @@ class CartoonsConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/cartoons/cartoons3D',
                   'parts' => [

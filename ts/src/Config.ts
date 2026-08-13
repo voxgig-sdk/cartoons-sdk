@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'Cartoons',
   }
 
 
@@ -63,7 +63,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "episode",
+          "name": "episodes",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 1
@@ -98,7 +98,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "runtime_in_minute",
+          "name": "runtime_in_minutes",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 6
@@ -127,6 +127,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/cartoons/cartoons2D",
               "parts": [
@@ -145,6 +146,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/cartoons/cartoons3D",
               "parts": [

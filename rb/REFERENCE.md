@@ -94,12 +94,12 @@ cartoon = client.Cartoon
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `creator` | `Array` | No |  |
-| `episode` | `Integer` | No |  |
+| `episodes` | `Integer` | No |  |
 | `genre` | `Array` | No |  |
 | `id` | `Integer` | No |  |
 | `image` | `String` | No |  |
 | `rating` | `String` | No |  |
-| `runtime_in_minute` | `Integer` | No |  |
+| `runtime_in_minutes` | `Integer` | No |  |
 | `title` | `String` | No |  |
 | `year` | `Integer` | No |  |
 

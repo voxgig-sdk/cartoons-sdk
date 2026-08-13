@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = CartoonsSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 cartoon = client.Cartoon.list()
 puts cartoon
 ```
@@ -237,12 +238,12 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `creator` |  |
-| `episode` |  |
+| `episodes` |  |
 | `genre` |  |
 | `id` |  |
 | `image` |  |
 | `rating` |  |
-| `runtime_in_minute` |  |
+| `runtime_in_minutes` |  |
 | `title` |  |
 | `year` |  |
 
@@ -270,12 +271,12 @@ Create an instance: `cartoon = client.Cartoon`
 | Field | Type | Description |
 | --- | --- | --- |
 | `creator` | `Array` |  |
-| `episode` | `Integer` |  |
+| `episodes` | `Integer` |  |
 | `genre` | `Array` |  |
 | `id` | `Integer` |  |
 | `image` | `String` |  |
 | `rating` | `String` |  |
-| `runtime_in_minute` | `Integer` |  |
+| `runtime_in_minutes` | `Integer` |  |
 | `title` | `String` |  |
 | `year` | `Integer` |  |
 

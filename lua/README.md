@@ -218,9 +218,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local cartoon, err = client:Cartoon():load()
+    local cartoon, err = client:Cartoon():list()
     if err then error(err) end
-    -- cartoon is the loaded record
+    -- cartoon is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -232,12 +232,12 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `creator` |  |
-| `episode` |  |
+| `episodes` |  |
 | `genre` |  |
 | `id` |  |
 | `image` |  |
 | `rating` |  |
-| `runtime_in_minute` |  |
+| `runtime_in_minutes` |  |
 | `title` |  |
 | `year` |  |
 
@@ -265,12 +265,12 @@ Create an instance: `local cartoon = client:Cartoon(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `creator` | `table` |  |
-| `episode` | `number` |  |
+| `episodes` | `number` |  |
 | `genre` | `table` |  |
 | `id` | `number` |  |
 | `image` | `string` |  |
 | `rating` | `string` |  |
-| `runtime_in_minute` | `number` |  |
+| `runtime_in_minutes` | `number` |  |
 | `title` | `string` |  |
 | `year` | `number` |  |
 

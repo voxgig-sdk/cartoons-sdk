@@ -88,12 +88,12 @@ cartoon = client.Cartoon()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `creator` | `list` | No |  |
-| `episode` | `int` | No |  |
+| `episodes` | `int` | No |  |
 | `genre` | `list` | No |  |
 | `id` | `int` | No |  |
 | `image` | `str` | No |  |
 | `rating` | `str` | No |  |
-| `runtime_in_minute` | `int` | No |  |
+| `runtime_in_minutes` | `int` | No |  |
 | `title` | `str` | No |  |
 | `year` | `int` | No |  |
 

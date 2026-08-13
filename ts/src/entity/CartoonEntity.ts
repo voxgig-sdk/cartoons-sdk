@@ -37,7 +37,7 @@ class CartoonEntity extends CartoonsEntityBase<Cartoon> {
 
 
 
-  async list(this: any, reqmatch?: CartoonListMatch, ctrl?: Control): Promise<Cartoon[]> {
+  async list(this: any, reqmatch?: CartoonListMatch, ctrl?: Control): Promise<CartoonEntity[]> {
 
     const utility = this._utility
 

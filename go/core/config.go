@@ -33,7 +33,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "episode",
+						"name": "episodes",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 1,
@@ -68,7 +68,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "runtime_in_minute",
+						"name": "runtime_in_minutes",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 6,
@@ -97,6 +97,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/cartoons/cartoons2D",
 								"parts": []any{
@@ -115,6 +116,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/cartoons/cartoons3D",
 								"parts": []any{
@@ -131,7 +133,6 @@ func MakeConfig() map[string]any {
 								"index$": 1,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{

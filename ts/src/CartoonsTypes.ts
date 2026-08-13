@@ -7,25 +7,31 @@
 
 export interface Cartoon {
   creator?: any[]
-  episode?: number
+  episodes?: number
   genre?: any[]
   id?: number
   image?: string
   rating?: string
-  runtime_in_minute?: number
+  runtime_in_minutes?: number
   title?: string
   year?: number
 }
 
 export interface CartoonListMatch {
   creator?: any[]
-  episode?: number
+  episodes?: number
   genre?: any[]
   id?: number
   image?: string
   rating?: string
-  runtime_in_minute?: number
+  runtime_in_minutes?: number
   title?: string
   year?: number
+
+  // Selects a custom action instead of the plain list:
+  //   'cartoons2_d' | 'cartoons3_d'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 

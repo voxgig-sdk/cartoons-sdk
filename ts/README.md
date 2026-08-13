@@ -35,7 +35,9 @@ const client = new CartoonsSDK()
 
 ### 2. List cartoon records
 
-`list()` resolves to an array of Cartoon objects — iterate it directly:
+`list()` resolves to an array of Cartoon ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const cartoons = await client.Cartoon().list()
@@ -120,7 +122,8 @@ Create a mock client for unit testing — no server required:
 const client = CartoonsSDK.test()
 
 const cartoon = await client.Cartoon().list()
-// cartoon is a bare entity populated with mock response data
+// cartoon is the entity, populated with mock response data
+// — call cartoon.data() for the record itself
 console.log(cartoon)
 ```
 
@@ -285,12 +288,12 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `creator` |  |
-| `episode` |  |
+| `episodes` |  |
 | `genre` |  |
 | `id` |  |
 | `image` |  |
 | `rating` |  |
-| `runtime_in_minute` |  |
+| `runtime_in_minutes` |  |
 | `title` |  |
 | `year` |  |
 
@@ -318,12 +321,12 @@ Create an instance: `const cartoon = client.Cartoon()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `creator` | `any[]` |  |
-| `episode` | `number` |  |
+| `episodes` | `number` |  |
 | `genre` | `any[]` |  |
 | `id` | `number` |  |
 | `image` | `string` |  |
 | `rating` | `string` |  |
-| `runtime_in_minute` | `number` |  |
+| `runtime_in_minutes` | `number` |  |
 | `title` | `string` |  |
 | `year` | `number` |  |
 

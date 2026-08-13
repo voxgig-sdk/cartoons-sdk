@@ -91,12 +91,12 @@ local cartoon = client:Cartoon(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `creator` | `table` | No |  |
-| `episode` | `number` | No |  |
+| `episodes` | `number` | No |  |
 | `genre` | `table` | No |  |
 | `id` | `number` | No |  |
 | `image` | `string` | No |  |
 | `rating` | `string` | No |  |
-| `runtime_in_minute` | `number` | No |  |
+| `runtime_in_minutes` | `number` | No |  |
 | `title` | `string` | No |  |
 | `year` | `number` | No |  |
 

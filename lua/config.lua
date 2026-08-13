@@ -33,7 +33,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "episode",
+            ["name"] = "episodes",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
@@ -68,7 +68,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "runtime_in_minute",
+            ["name"] = "runtime_in_minutes",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 6,
@@ -97,6 +97,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/cartoons/cartoons2D",
                 ["parts"] = {
@@ -115,6 +116,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/cartoons/cartoons3D",
                 ["parts"] = {

@@ -11,7 +11,7 @@ main: kit: entity: cartoon: {
       type: "`$ARRAY`"
     }
     {
-      name: "episode"
+      name: "episodes"
       req: false
       type: "`$INTEGER`"
     }
@@ -36,7 +36,7 @@ main: kit: entity: cartoon: {
       type: "`$STRING`"
     }
     {
-      name: "runtime_in_minute"
+      name: "runtime_in_minutes"
       req: false
       type: "`$INTEGER`"
     }

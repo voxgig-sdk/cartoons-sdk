@@ -117,14 +117,35 @@ const cartoon = client.Cartoon()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `creator` | `any[]` | No |  |
-| `episode` | `number` | No |  |
+| `episodes` | `number` | No |  |
 | `genre` | `any[]` | No |  |
 | `id` | `number` | No |  |
 | `image` | `string` | No |  |
 | `rating` | `string` | No |  |
-| `runtime_in_minute` | `number` | No |  |
+| `runtime_in_minutes` | `number` | No |  |
 | `title` | `string` | No |  |
 | `year` | `number` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `cartoons2_d` | `/cartoons/cartoons2D` | `client.Cartoon().list({ $action: 'cartoons2_d', ... })` |
+| `cartoons3_d` | `/cartoons/cartoons3D` | `client.Cartoon().list({ $action: 'cartoons3_d', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Cartoon record — check the API definition for its shape.
+
+```ts
+const result = await client.Cartoon().list({
+  $action: 'cartoons2_d',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 

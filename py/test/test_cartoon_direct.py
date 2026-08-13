@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from cartoons_sdk.utility.voxgig_struct import voxgig_struct as vs
 from cartoons_sdk import CartoonsSDK
-from core import helpers
+from cartoons_sdk.core import helpers
 from test import runner
 
 

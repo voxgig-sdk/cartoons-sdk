@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import CartoonsSDK
-from core.error import CartoonsError
-from core.result import CartoonsResult
-from core.response import CartoonsResponse
-from core.spec import CartoonsSpec
-from feature.base_feature import CartoonsBaseFeature
+from projectname_sdk.core.error import CartoonsError
+from projectname_sdk.core.result import CartoonsResult
+from projectname_sdk.core.response import CartoonsResponse
+from projectname_sdk.core.spec import CartoonsSpec
+from projectname_sdk.feature.base_feature import CartoonsBaseFeature
 
 
 def _client():
