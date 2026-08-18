@@ -28,7 +28,7 @@ class CartoonsSDK
     utility = CartoonsUtility.new
     @_utility = utility
 
-    config = CartoonsConfig.make_config
+    config = CartoonsConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

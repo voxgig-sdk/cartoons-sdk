@@ -33,7 +33,7 @@ class CartoonEntityTest < Minitest::Test
     assert_equal 3, seen.length
 
     # Inbound: streaming active -> yields each item from the feature.
-    cfg = CartoonsConfig.make_config
+    cfg = CartoonsConfig.shared_config
     if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
       sdk = CartoonsSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
       got = []
