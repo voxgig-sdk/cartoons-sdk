@@ -93,15 +93,15 @@ cartoon = client.Cartoon
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `creator` | `Array` | No |  |
-| `episodes` | `Integer` | No |  |
-| `genre` | `Array` | No |  |
-| `id` | `Integer` | No |  |
-| `image` | `String` | No |  |
-| `rating` | `String` | No |  |
-| `runtime_in_minutes` | `Integer` | No |  |
-| `title` | `String` | No |  |
-| `year` | `Integer` | No |  |
+| `creator` | `Array` | No | Creator(s) of the cartoon |
+| `episodes` | `Integer` | No | Number of episodes |
+| `genre` | `Array` | No | Genre(s) of the cartoon |
+| `id` | `Integer` | No | Unique identifier for the cartoon |
+| `image` | `String` | No | URL to the cartoon's image |
+| `rating` | `String` | No | Rating of the cartoon |
+| `runtime_in_minutes` | `Integer` | No | Runtime of the cartoon episode in minutes |
+| `title` | `String` | No | Title of the cartoon |
+| `year` | `Integer` | No | Year the cartoon was released |
 
 ### Operations
 

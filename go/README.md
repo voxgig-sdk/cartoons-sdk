@@ -6,7 +6,7 @@ The Golang SDK for the Cartoons API — an entity-oriented client using standard
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Cartoon(nil)` — each with the same small set of operations (`List`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -260,15 +260,15 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"creator"` |  |
-| `"episodes"` |  |
-| `"genre"` |  |
-| `"id"` |  |
-| `"image"` |  |
-| `"rating"` |  |
-| `"runtime_in_minutes"` |  |
-| `"title"` |  |
-| `"year"` |  |
+| `"creator"` | Creator(s) of the cartoon |
+| `"episodes"` | Number of episodes |
+| `"genre"` | Genre(s) of the cartoon |
+| `"id"` | Unique identifier for the cartoon |
+| `"image"` | URL to the cartoon's image |
+| `"rating"` | Rating of the cartoon |
+| `"runtime_in_minutes"` | Runtime of the cartoon episode in minutes |
+| `"title"` | Title of the cartoon |
+| `"year"` | Year the cartoon was released |
 
 Operations: List.
 
@@ -293,15 +293,15 @@ Create an instance: `cartoon := client.Cartoon(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `creator` | `[]any` |  |
-| `episodes` | `int` |  |
-| `genre` | `[]any` |  |
-| `id` | `int` |  |
-| `image` | `string` |  |
-| `rating` | `string` |  |
-| `runtime_in_minutes` | `int` |  |
-| `title` | `string` |  |
-| `year` | `int` |  |
+| `creator` | `[]any` | Creator(s) of the cartoon |
+| `episodes` | `int` | Number of episodes |
+| `genre` | `[]any` | Genre(s) of the cartoon |
+| `id` | `int` | Unique identifier for the cartoon |
+| `image` | `string` | URL to the cartoon's image |
+| `rating` | `string` | Rating of the cartoon |
+| `runtime_in_minutes` | `int` | Runtime of the cartoon episode in minutes |
+| `title` | `string` | Title of the cartoon |
+| `year` | `int` | Year the cartoon was released |
 
 #### Example: List
 

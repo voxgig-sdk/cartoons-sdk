@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -287,15 +287,15 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `creator` |  |
-| `episodes` |  |
-| `genre` |  |
-| `id` |  |
-| `image` |  |
-| `rating` |  |
-| `runtime_in_minutes` |  |
-| `title` |  |
-| `year` |  |
+| `creator` | Creator(s) of the cartoon |
+| `episodes` | Number of episodes |
+| `genre` | Genre(s) of the cartoon |
+| `id` | Unique identifier for the cartoon |
+| `image` | URL to the cartoon's image |
+| `rating` | Rating of the cartoon |
+| `runtime_in_minutes` | Runtime of the cartoon episode in minutes |
+| `title` | Title of the cartoon |
+| `year` | Year the cartoon was released |
 
 Operations: list.
 
@@ -320,15 +320,15 @@ Create an instance: `const cartoon = client.Cartoon()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `creator` | `any[]` |  |
-| `episodes` | `number` |  |
-| `genre` | `any[]` |  |
-| `id` | `number` |  |
-| `image` | `string` |  |
-| `rating` | `string` |  |
-| `runtime_in_minutes` | `number` |  |
-| `title` | `string` |  |
-| `year` | `number` |  |
+| `creator` | `any[]` | Creator(s) of the cartoon |
+| `episodes` | `number` | Number of episodes |
+| `genre` | `any[]` | Genre(s) of the cartoon |
+| `id` | `number` | Unique identifier for the cartoon |
+| `image` | `string` | URL to the cartoon's image |
+| `rating` | `string` | Rating of the cartoon |
+| `runtime_in_minutes` | `number` | Runtime of the cartoon episode in minutes |
+| `title` | `string` | Title of the cartoon |
+| `year` | `number` | Year the cartoon was released |
 
 #### Example: List
 

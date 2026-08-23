@@ -243,15 +243,15 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `creator` |  |
-| `episodes` |  |
-| `genre` |  |
-| `id` |  |
-| `image` |  |
-| `rating` |  |
-| `runtime_in_minutes` |  |
-| `title` |  |
-| `year` |  |
+| `creator` | Creator(s) of the cartoon |
+| `episodes` | Number of episodes |
+| `genre` | Genre(s) of the cartoon |
+| `id` | Unique identifier for the cartoon |
+| `image` | URL to the cartoon's image |
+| `rating` | Rating of the cartoon |
+| `runtime_in_minutes` | Runtime of the cartoon episode in minutes |
+| `title` | Title of the cartoon |
+| `year` | Year the cartoon was released |
 
 Operations: List.
 
@@ -276,15 +276,15 @@ Create an instance: `cartoon = client.Cartoon()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `creator` | `list` |  |
-| `episodes` | `int` |  |
-| `genre` | `list` |  |
-| `id` | `int` |  |
-| `image` | `str` |  |
-| `rating` | `str` |  |
-| `runtime_in_minutes` | `int` |  |
-| `title` | `str` |  |
-| `year` | `int` |  |
+| `creator` | `list` | Creator(s) of the cartoon |
+| `episodes` | `int` | Number of episodes |
+| `genre` | `list` | Genre(s) of the cartoon |
+| `id` | `int` | Unique identifier for the cartoon |
+| `image` | `str` | URL to the cartoon's image |
+| `rating` | `str` | Rating of the cartoon |
+| `runtime_in_minutes` | `int` | Runtime of the cartoon episode in minutes |
+| `title` | `str` | Title of the cartoon |
+| `year` | `int` | Year the cartoon was released |
 
 #### Example: List
 

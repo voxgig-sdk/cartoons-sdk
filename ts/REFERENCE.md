@@ -116,15 +116,15 @@ const cartoon = client.Cartoon()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `creator` | `any[]` | No |  |
-| `episodes` | `number` | No |  |
-| `genre` | `any[]` | No |  |
-| `id` | `number` | No |  |
-| `image` | `string` | No |  |
-| `rating` | `string` | No |  |
-| `runtime_in_minutes` | `number` | No |  |
-| `title` | `string` | No |  |
-| `year` | `number` | No |  |
+| `creator` | `any[]` | No | Creator(s) of the cartoon |
+| `episodes` | `number` | No | Number of episodes |
+| `genre` | `any[]` | No | Genre(s) of the cartoon |
+| `id` | `number` | No | Unique identifier for the cartoon |
+| `image` | `string` | No | URL to the cartoon's image |
+| `rating` | `string` | No | Rating of the cartoon |
+| `runtime_in_minutes` | `number` | No | Runtime of the cartoon episode in minutes |
+| `title` | `string` | No | Title of the cartoon |
+| `year` | `number` | No | Year the cartoon was released |
 
 ### Actions
 

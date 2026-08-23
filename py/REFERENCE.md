@@ -87,15 +87,15 @@ cartoon = client.Cartoon()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `creator` | `list` | No |  |
-| `episodes` | `int` | No |  |
-| `genre` | `list` | No |  |
-| `id` | `int` | No |  |
-| `image` | `str` | No |  |
-| `rating` | `str` | No |  |
-| `runtime_in_minutes` | `int` | No |  |
-| `title` | `str` | No |  |
-| `year` | `int` | No |  |
+| `creator` | `list` | No | Creator(s) of the cartoon |
+| `episodes` | `int` | No | Number of episodes |
+| `genre` | `list` | No | Genre(s) of the cartoon |
+| `id` | `int` | No | Unique identifier for the cartoon |
+| `image` | `str` | No | URL to the cartoon's image |
+| `rating` | `str` | No | Rating of the cartoon |
+| `runtime_in_minutes` | `int` | No | Runtime of the cartoon episode in minutes |
+| `title` | `str` | No | Title of the cartoon |
+| `year` | `int` | No | Year the cartoon was released |
 
 ### Operations
 

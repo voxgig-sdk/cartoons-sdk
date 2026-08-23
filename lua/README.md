@@ -231,15 +231,15 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `creator` |  |
-| `episodes` |  |
-| `genre` |  |
-| `id` |  |
-| `image` |  |
-| `rating` |  |
-| `runtime_in_minutes` |  |
-| `title` |  |
-| `year` |  |
+| `creator` | Creator(s) of the cartoon |
+| `episodes` | Number of episodes |
+| `genre` | Genre(s) of the cartoon |
+| `id` | Unique identifier for the cartoon |
+| `image` | URL to the cartoon's image |
+| `rating` | Rating of the cartoon |
+| `runtime_in_minutes` | Runtime of the cartoon episode in minutes |
+| `title` | Title of the cartoon |
+| `year` | Year the cartoon was released |
 
 Operations: List.
 
@@ -264,15 +264,15 @@ Create an instance: `local cartoon = client:Cartoon(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `creator` | `table` |  |
-| `episodes` | `number` |  |
-| `genre` | `table` |  |
-| `id` | `number` |  |
-| `image` | `string` |  |
-| `rating` | `string` |  |
-| `runtime_in_minutes` | `number` |  |
-| `title` | `string` |  |
-| `year` | `number` |  |
+| `creator` | `table` | Creator(s) of the cartoon |
+| `episodes` | `number` | Number of episodes |
+| `genre` | `table` | Genre(s) of the cartoon |
+| `id` | `number` | Unique identifier for the cartoon |
+| `image` | `string` | URL to the cartoon's image |
+| `rating` | `string` | Rating of the cartoon |
+| `runtime_in_minutes` | `number` | Runtime of the cartoon episode in minutes |
+| `title` | `string` | Title of the cartoon |
+| `year` | `number` | Year the cartoon was released |
 
 #### Example: List
 

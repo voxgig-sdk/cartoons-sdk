@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "Cartoons",
+			"slug": "cartoons",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -33,38 +36,47 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "creator",
+						"short": "Creator(s) of the cartoon",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "episodes",
+						"short": "Number of episodes",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "genre",
+						"short": "Genre(s) of the cartoon",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the cartoon",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "image",
+						"short": "URL to the cartoon's image",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "rating",
+						"short": "Rating of the cartoon",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "runtime_in_minutes",
+						"short": "Runtime of the cartoon episode in minutes",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "title",
+						"short": "Title of the cartoon",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "year",
+						"short": "Year the cartoon was released",
 						"type": "`$INTEGER`",
 					},
 				},

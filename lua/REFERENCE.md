@@ -90,15 +90,15 @@ local cartoon = client:Cartoon(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `creator` | `table` | No |  |
-| `episodes` | `number` | No |  |
-| `genre` | `table` | No |  |
-| `id` | `number` | No |  |
-| `image` | `string` | No |  |
-| `rating` | `string` | No |  |
-| `runtime_in_minutes` | `number` | No |  |
-| `title` | `string` | No |  |
-| `year` | `number` | No |  |
+| `creator` | `table` | No | Creator(s) of the cartoon |
+| `episodes` | `number` | No | Number of episodes |
+| `genre` | `table` | No | Genre(s) of the cartoon |
+| `id` | `number` | No | Unique identifier for the cartoon |
+| `image` | `string` | No | URL to the cartoon's image |
+| `rating` | `string` | No | Rating of the cartoon |
+| `runtime_in_minutes` | `number` | No | Runtime of the cartoon episode in minutes |
+| `title` | `string` | No | Title of the cartoon |
+| `year` | `number` | No | Year the cartoon was released |
 
 ### Operations
 

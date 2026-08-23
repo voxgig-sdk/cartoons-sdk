@@ -8,46 +8,55 @@ main: kit: entity: cartoon: {
     {
       name: "creator"
       req: false
+      short: "Creator(s) of the cartoon"
       type: "`$ARRAY`"
     }
     {
       name: "episodes"
       req: false
+      short: "Number of episodes"
       type: "`$INTEGER`"
     }
     {
       name: "genre"
       req: false
+      short: "Genre(s) of the cartoon"
       type: "`$ARRAY`"
     }
     {
       name: "id"
       req: false
+      short: "Unique identifier for the cartoon"
       type: "`$INTEGER`"
     }
     {
       name: "image"
       req: false
+      short: "URL to the cartoon's image"
       type: "`$STRING`"
     }
     {
       name: "rating"
       req: false
+      short: "Rating of the cartoon"
       type: "`$STRING`"
     }
     {
       name: "runtime_in_minutes"
       req: false
+      short: "Runtime of the cartoon episode in minutes"
       type: "`$INTEGER`"
     }
     {
       name: "title"
       req: false
+      short: "Title of the cartoon"
       type: "`$STRING`"
     }
     {
       name: "year"
       req: false
+      short: "Year the cartoon was released"
       type: "`$INTEGER`"
     }
   ]

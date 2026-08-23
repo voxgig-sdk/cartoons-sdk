@@ -36,54 +36,63 @@
               "active": true,
               "name": "creator",
               "req": false,
+              "short": "Creator(s) of the cartoon",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "episodes",
               "req": false,
+              "short": "Number of episodes",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "genre",
               "req": false,
+              "short": "Genre(s) of the cartoon",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the cartoon",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "image",
               "req": false,
+              "short": "URL to the cartoon's image",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "rating",
               "req": false,
+              "short": "Rating of the cartoon",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "runtime_in_minutes",
               "req": false,
+              "short": "Runtime of the cartoon episode in minutes",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "title",
               "req": false,
+              "short": "Title of the cartoon",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "year",
               "req": false,
+              "short": "Year the cartoon was released",
               "type": "`$INTEGER`"
             }
           ],

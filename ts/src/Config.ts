@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'Cartoons',
+        slug: "cartoons",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -56,38 +67,47 @@ class Config {
       "fields": [
         {
           "name": "creator",
+          "short": "Creator(s) of the cartoon",
           "type": "`$ARRAY`"
         },
         {
           "name": "episodes",
+          "short": "Number of episodes",
           "type": "`$INTEGER`"
         },
         {
           "name": "genre",
+          "short": "Genre(s) of the cartoon",
           "type": "`$ARRAY`"
         },
         {
           "name": "id",
+          "short": "Unique identifier for the cartoon",
           "type": "`$INTEGER`"
         },
         {
           "name": "image",
+          "short": "URL to the cartoon's image",
           "type": "`$STRING`"
         },
         {
           "name": "rating",
+          "short": "Rating of the cartoon",
           "type": "`$STRING`"
         },
         {
           "name": "runtime_in_minutes",
+          "short": "Runtime of the cartoon episode in minutes",
           "type": "`$INTEGER`"
         },
         {
           "name": "title",
+          "short": "Title of the cartoon",
           "type": "`$STRING`"
         },
         {
           "name": "year",
+          "short": "Year the cartoon was released",
           "type": "`$INTEGER`"
         }
       ],

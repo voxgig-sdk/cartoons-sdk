@@ -92,15 +92,15 @@ $cartoon = $client->Cartoon();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `creator` | `array` | No |  |
-| `episodes` | `int` | No |  |
-| `genre` | `array` | No |  |
-| `id` | `int` | No |  |
-| `image` | `string` | No |  |
-| `rating` | `string` | No |  |
-| `runtime_in_minutes` | `int` | No |  |
-| `title` | `string` | No |  |
-| `year` | `int` | No |  |
+| `creator` | `array` | No | Creator(s) of the cartoon |
+| `episodes` | `int` | No | Number of episodes |
+| `genre` | `array` | No | Genre(s) of the cartoon |
+| `id` | `int` | No | Unique identifier for the cartoon |
+| `image` | `string` | No | URL to the cartoon's image |
+| `rating` | `string` | No | Rating of the cartoon |
+| `runtime_in_minutes` | `int` | No | Runtime of the cartoon episode in minutes |
+| `title` | `string` | No | Title of the cartoon |
+| `year` | `int` | No | Year the cartoon was released |
 
 ### Operations
 

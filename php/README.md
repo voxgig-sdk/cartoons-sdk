@@ -247,15 +247,15 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `creator` |  |
-| `episodes` |  |
-| `genre` |  |
-| `id` |  |
-| `image` |  |
-| `rating` |  |
-| `runtime_in_minutes` |  |
-| `title` |  |
-| `year` |  |
+| `creator` | Creator(s) of the cartoon |
+| `episodes` | Number of episodes |
+| `genre` | Genre(s) of the cartoon |
+| `id` | Unique identifier for the cartoon |
+| `image` | URL to the cartoon's image |
+| `rating` | Rating of the cartoon |
+| `runtime_in_minutes` | Runtime of the cartoon episode in minutes |
+| `title` | Title of the cartoon |
+| `year` | Year the cartoon was released |
 
 Operations: List.
 
@@ -280,15 +280,15 @@ Create an instance: `$cartoon = $client->Cartoon();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `creator` | `array` |  |
-| `episodes` | `int` |  |
-| `genre` | `array` |  |
-| `id` | `int` |  |
-| `image` | `string` |  |
-| `rating` | `string` |  |
-| `runtime_in_minutes` | `int` |  |
-| `title` | `string` |  |
-| `year` | `int` |  |
+| `creator` | `array` | Creator(s) of the cartoon |
+| `episodes` | `int` | Number of episodes |
+| `genre` | `array` | Genre(s) of the cartoon |
+| `id` | `int` | Unique identifier for the cartoon |
+| `image` | `string` | URL to the cartoon's image |
+| `rating` | `string` | Rating of the cartoon |
+| `runtime_in_minutes` | `int` | Runtime of the cartoon episode in minutes |
+| `title` | `string` | Title of the cartoon |
+| `year` | `int` | Year the cartoon was released |
 
 #### Example: List
 
