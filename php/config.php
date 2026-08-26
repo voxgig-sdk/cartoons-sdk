@@ -42,6 +42,7 @@ class CartoonsConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
