@@ -78,6 +78,7 @@ class CartoonsConfig
               'type' => '`$INTEGER`',
             ],
             [
+              'format' => 'uri',
               'name' => 'image',
               'short' => 'URL to the cartoon\'s image',
               'type' => '`$STRING`',
@@ -103,6 +104,10 @@ class CartoonsConfig
               'type' => '`$INTEGER`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'cartoon',
           'op' => [
             'list' => [
@@ -114,9 +119,13 @@ class CartoonsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/cartoons/cartoons2D',
-                  'parts' => [
-                    'cartoons',
-                    'cartoons2D',
+                  'segments' => [
+                    [
+                      'lit' => 'cartoons',
+                    ],
+                    [
+                      'lit' => 'cartoons2D',
+                    ],
                   ],
                   'select' => [
                     '$action' => 'cartoons2_d',
@@ -125,15 +134,23 @@ class CartoonsConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [
+                    'cartoons',
+                    'cartoons2D',
+                  ],
                 ],
                 [
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/cartoons/cartoons3D',
-                  'parts' => [
-                    'cartoons',
-                    'cartoons3D',
+                  'segments' => [
+                    [
+                      'lit' => 'cartoons',
+                    ],
+                    [
+                      'lit' => 'cartoons3D',
+                    ],
                   ],
                   'select' => [
                     '$action' => 'cartoons3_d',
@@ -141,6 +158,10 @@ class CartoonsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'cartoons',
+                    'cartoons3D',
                   ],
                 ],
               ],

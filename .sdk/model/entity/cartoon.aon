@@ -30,6 +30,7 @@ main: kit: entity: cartoon: {
       type: "`$INTEGER`"
     }
     {
+      format: "uri"
       name: "image"
       req: false
       short: "URL to the cartoon's image"
@@ -74,9 +75,13 @@ main: kit: entity: cartoon: {
         {
           method: "GET"
           orig: "/cartoons/cartoons2D"
-          parts: [
-            "cartoons"
-            "cartoons2D"
+          segments: [
+            {
+              lit: "cartoons"
+            }
+            {
+              lit: "cartoons2D"
+            }
           ]
           select: {
             "$action": "cartoons2_d"
@@ -89,9 +94,13 @@ main: kit: entity: cartoon: {
         {
           method: "GET"
           orig: "/cartoons/cartoons3D"
-          parts: [
-            "cartoons"
-            "cartoons3D"
+          segments: [
+            {
+              lit: "cartoons"
+            }
+            {
+              lit: "cartoons3D"
+            }
           ]
           select: {
             "$action": "cartoons3_d"
