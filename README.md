@@ -105,7 +105,7 @@ local results, err = client:Cartoon():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/cartoons` | publish pending — [install from git tag](https://github.com/voxgig-sdk/cartoons-sdk/releases) |
+| TypeScript | `@voxgig-sdk/cartoons-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/cartoons-sdk/releases) |
 | Python | `voxgig-sdk-cartoons` | publish pending — [install from git tag](https://github.com/voxgig-sdk/cartoons-sdk/releases) |
 | PHP | `voxgig-sdk/cartoons` | publish pending — [install from git tag](https://github.com/voxgig-sdk/cartoons-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/cartoons-sdk/go` | `go get github.com/voxgig-sdk/cartoons-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Cartoon():list()
 ### TypeScript
 
 ```ts
-import { CartoonsSDK } from '@voxgig-sdk/cartoons'
+import { CartoonsSDK } from '@voxgig-sdk/cartoons-sdk'
 
 const client = new CartoonsSDK()
 

@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { CartoonsSDK } from '@voxgig-sdk/cartoons'
+import { CartoonsSDK } from '@voxgig-sdk/cartoons-sdk'
 
 const client = new CartoonsSDK()
 ```
@@ -419,7 +419,7 @@ cartoons/
 Import the SDK from the package root:
 
 ```ts
-import { CartoonsSDK } from '@voxgig-sdk/cartoons'
+import { CartoonsSDK } from '@voxgig-sdk/cartoons-sdk'
 ```
 
 ### Entity state
