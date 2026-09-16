@@ -3,36 +3,36 @@
     "cartoon": {
       "CARTOON00": {
         "creator": [],
-        "episodes": "s5b",
+        "episodes": 91,
         "genre": [],
         "id": "CARTOON00",
         "image": "s5e",
         "rating": "s5f",
-        "runtime_in_minutes": "s60",
+        "runtime_in_minutes": 96,
         "title": "s61",
-        "year": "s62"
+        "year": 98
       },
       "CARTOON01": {
         "creator": [],
-        "episodes": "sb5",
+        "episodes": 181,
         "genre": [],
         "id": "CARTOON01",
         "image": "sb8",
         "rating": "sb9",
-        "runtime_in_minutes": "sba",
+        "runtime_in_minutes": 186,
         "title": "sbb",
-        "year": "sbc"
+        "year": 188
       },
       "CARTOON02": {
         "creator": [],
-        "episodes": "s10f",
+        "episodes": 271,
         "genre": [],
         "id": "CARTOON02",
         "image": "s112",
         "rating": "s113",
-        "runtime_in_minutes": "s114",
+        "runtime_in_minutes": 276,
         "title": "s115",
-        "year": "s116"
+        "year": 278
       }
     }
   },
@@ -40,13 +40,187 @@
     "cartoon": {
       "cartoon_ref01": {
         "creator": [],
-        "episodes": "s169",
+        "episodes": 361,
         "genre": [],
         "image": "s16c",
         "rating": "s16d",
-        "runtime_in_minutes": "s16e",
+        "runtime_in_minutes": 366,
         "title": "s16f",
-        "year": "s170"
+        "year": 368
+      }
+    }
+  },
+  "requests": {
+    "GET /cartoons/cartoons2D": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get2DCartoons",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "creator": {
+                        "description": "Creator(s) of the cartoon",
+                        "example": [
+                          "Stephen Hillenburg"
+                        ],
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "episodes": {
+                        "description": "Number of episodes",
+                        "example": 272,
+                        "type": "integer"
+                      },
+                      "genre": {
+                        "description": "Genre(s) of the cartoon",
+                        "example": [
+                          "Comedy",
+                          "Family"
+                        ],
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "id": {
+                        "description": "Unique identifier for the cartoon",
+                        "example": 1,
+                        "type": "integer"
+                      },
+                      "image": {
+                        "description": "URL to the cartoon's image",
+                        "example": "https://example.com/image.jpg",
+                        "format": "uri",
+                        "type": "string"
+                      },
+                      "rating": {
+                        "description": "Rating of the cartoon",
+                        "example": "TV-Y7",
+                        "type": "string"
+                      },
+                      "runtime_in_minutes": {
+                        "description": "Runtime of the cartoon episode in minutes",
+                        "example": 23,
+                        "type": "integer"
+                      },
+                      "title": {
+                        "description": "Title of the cartoon",
+                        "example": "SpongeBob SquarePants",
+                        "type": "string"
+                      },
+                      "year": {
+                        "description": "Year the cartoon was released",
+                        "example": 1999,
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /cartoons/cartoons3D": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get3DCartoons",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "creator": {
+                        "description": "Creator(s) of the cartoon",
+                        "example": [
+                          "Stephen Hillenburg"
+                        ],
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "episodes": {
+                        "description": "Number of episodes",
+                        "example": 272,
+                        "type": "integer"
+                      },
+                      "genre": {
+                        "description": "Genre(s) of the cartoon",
+                        "example": [
+                          "Comedy",
+                          "Family"
+                        ],
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "id": {
+                        "description": "Unique identifier for the cartoon",
+                        "example": 1,
+                        "type": "integer"
+                      },
+                      "image": {
+                        "description": "URL to the cartoon's image",
+                        "example": "https://example.com/image.jpg",
+                        "format": "uri",
+                        "type": "string"
+                      },
+                      "rating": {
+                        "description": "Rating of the cartoon",
+                        "example": "TV-Y7",
+                        "type": "string"
+                      },
+                      "runtime_in_minutes": {
+                        "description": "Runtime of the cartoon episode in minutes",
+                        "example": 23,
+                        "type": "integer"
+                      },
+                      "title": {
+                        "description": "Title of the cartoon",
+                        "example": "SpongeBob SquarePants",
+                        "type": "string"
+                      },
+                      "year": {
+                        "description": "Year the cartoon was released",
+                        "example": 1999,
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

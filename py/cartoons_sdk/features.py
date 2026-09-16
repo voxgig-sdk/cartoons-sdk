@@ -1,12 +1,18 @@
 # Cartoons SDK feature factory
 
 from cartoons_sdk.feature.base_feature import CartoonsBaseFeature
+from cartoons_sdk.feature.ratelimit_feature import CartoonsRatelimitFeature
+from cartoons_sdk.feature.retry_feature import CartoonsRetryFeature
 from cartoons_sdk.feature.test_feature import CartoonsTestFeature
+from cartoons_sdk.feature.timeout_feature import CartoonsTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: CartoonsBaseFeature(),
+    "ratelimit": lambda: CartoonsRatelimitFeature(),
+    "retry": lambda: CartoonsRetryFeature(),
     "test": lambda: CartoonsTestFeature(),
+    "timeout": lambda: CartoonsTimeoutFeature(),
 }
 
 
