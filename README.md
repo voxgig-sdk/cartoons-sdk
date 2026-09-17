@@ -105,12 +105,12 @@ local results, err = client:Cartoon():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/cartoons-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/cartoons-sdk/releases) |
-| Python | `voxgig-sdk-cartoons` | publish pending — [install from git tag](https://github.com/voxgig-sdk/cartoons-sdk/releases) |
-| PHP | `voxgig-sdk/cartoons` | publish pending — [install from git tag](https://github.com/voxgig-sdk/cartoons-sdk/releases) |
+| TypeScript | `@voxgig-sdk/cartoons-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/cartoons-sdk/tags) |
+| Python | `voxgig-sdk-cartoons` | publish pending — [install from git tag](https://github.com/voxgig-sdk/cartoons-sdk/tags) |
+| PHP | `voxgig-sdk/cartoons` | publish pending — [install from git tag](https://github.com/voxgig-sdk/cartoons-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/cartoons-sdk/go` | `go get github.com/voxgig-sdk/cartoons-sdk/go@latest` |
-| Ruby | `voxgig-sdk-cartoons` | publish pending — [install from git tag](https://github.com/voxgig-sdk/cartoons-sdk/releases) |
-| Lua | `voxgig-sdk-cartoons` | publish pending — [install from git tag](https://github.com/voxgig-sdk/cartoons-sdk/releases) |
+| Ruby | `voxgig-sdk-cartoons` | publish pending — [install from git tag](https://github.com/voxgig-sdk/cartoons-sdk/tags) |
+| Lua | `voxgig-sdk-cartoons` | publish pending — [install from git tag](https://github.com/voxgig-sdk/cartoons-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/cartoons-sdk/go-cli` | `go install github.com/voxgig-sdk/cartoons-sdk/go-cli/cmd/cartoons@latest` |
 | Go MCP server | `github.com/voxgig-sdk/cartoons-sdk/go-mcp` | `go get github.com/voxgig-sdk/cartoons-sdk/go-mcp@latest` |
 
