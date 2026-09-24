@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -139,49 +132,58 @@ class Config {
       "fields": [
         {
           "name": "creator",
-          "short": "Creator(s) of the cartoon",
-          "type": "`$ARRAY`"
+          "title": "Creator",
+          "type": "`$ARRAY`",
+          "short": "Creator(s) of the cartoon"
         },
         {
           "name": "episodes",
-          "short": "Number of episodes",
-          "type": "`$INTEGER`"
+          "title": "Episodes",
+          "type": "`$INTEGER`",
+          "short": "Number of episodes"
         },
         {
           "name": "genre",
-          "short": "Genre(s) of the cartoon",
-          "type": "`$ARRAY`"
+          "title": "Genre",
+          "type": "`$ARRAY`",
+          "short": "Genre(s) of the cartoon"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the cartoon",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Unique identifier for the cartoon"
         },
         {
-          "format": "uri",
           "name": "image",
+          "title": "Image",
+          "type": "`$STRING`",
           "short": "URL to the cartoon's image",
-          "type": "`$STRING`"
+          "format": "uri"
         },
         {
           "name": "rating",
-          "short": "Rating of the cartoon",
-          "type": "`$STRING`"
+          "title": "Rating",
+          "type": "`$STRING`",
+          "short": "Rating of the cartoon"
         },
         {
           "name": "runtime_in_minutes",
-          "short": "Runtime of the cartoon episode in minutes",
-          "type": "`$INTEGER`"
+          "title": "Runtime In Minutes",
+          "type": "`$INTEGER`",
+          "short": "Runtime of the cartoon episode in minutes"
         },
         {
           "name": "title",
-          "short": "Title of the cartoon",
-          "type": "`$STRING`"
+          "title": "Title",
+          "type": "`$STRING`",
+          "short": "Title of the cartoon"
         },
         {
           "name": "year",
-          "short": "Year the cartoon was released",
-          "type": "`$INTEGER`"
+          "title": "Year",
+          "type": "`$INTEGER`",
+          "short": "Year the cartoon was released"
         }
       ],
       "id": {
@@ -195,7 +197,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/cartoons/cartoons2D",
@@ -207,20 +208,21 @@ class Config {
                   "lit": "cartoons2D"
                 }
               ],
-              "select": {
-                "$action": "cartoons2_d"
-              },
+              "parts": [
+                "cartoons",
+                "cartoons2D"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "cartoons",
-                "cartoons2D"
-              ]
+              "args": {},
+              "select": {
+                "$action": "cartoons2_d"
+              }
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/cartoons/cartoons3D",
@@ -232,17 +234,19 @@ class Config {
                   "lit": "cartoons3D"
                 }
               ],
-              "select": {
-                "$action": "cartoons3_d"
-              },
+              "parts": [
+                "cartoons",
+                "cartoons3D"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "cartoons",
-                "cartoons3D"
-              ]
+              "args": {},
+              "select": {
+                "$action": "cartoons3_d"
+              }
             }
           ]
         }

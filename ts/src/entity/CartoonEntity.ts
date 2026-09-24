@@ -19,7 +19,6 @@ import type {
   CartoonListMatch,
 } from '../CartoonsTypes'
 
-// TODO: needs Entity superclass
 class CartoonEntity extends CartoonsEntityBase<Cartoon> {
 
   constructor(client: CartoonsSDK, entopts: any) {

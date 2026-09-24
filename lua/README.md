@@ -43,7 +43,7 @@ local cartoons, err = client:Cartoon():list()
 if err then error(err) end
 
 for _, item in ipairs(cartoons) do
-  print(item["id"], item["image"])
+  print(item["id"])
 end
 ```
 

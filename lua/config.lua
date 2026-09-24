@@ -87,49 +87,58 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "creator",
-            ["short"] = "Creator(s) of the cartoon",
+            ["title"] = "Creator",
             ["type"] = "`$ARRAY`",
+            ["short"] = "Creator(s) of the cartoon",
           },
           {
             ["name"] = "episodes",
-            ["short"] = "Number of episodes",
+            ["title"] = "Episodes",
             ["type"] = "`$INTEGER`",
+            ["short"] = "Number of episodes",
           },
           {
             ["name"] = "genre",
-            ["short"] = "Genre(s) of the cartoon",
+            ["title"] = "Genre",
             ["type"] = "`$ARRAY`",
+            ["short"] = "Genre(s) of the cartoon",
           },
           {
             ["name"] = "id",
-            ["short"] = "Unique identifier for the cartoon",
+            ["title"] = "Id",
             ["type"] = "`$INTEGER`",
+            ["short"] = "Unique identifier for the cartoon",
           },
           {
-            ["format"] = "uri",
             ["name"] = "image",
-            ["short"] = "URL to the cartoon's image",
+            ["title"] = "Image",
             ["type"] = "`$STRING`",
+            ["short"] = "URL to the cartoon's image",
+            ["format"] = "uri",
           },
           {
             ["name"] = "rating",
-            ["short"] = "Rating of the cartoon",
+            ["title"] = "Rating",
             ["type"] = "`$STRING`",
+            ["short"] = "Rating of the cartoon",
           },
           {
             ["name"] = "runtime_in_minutes",
-            ["short"] = "Runtime of the cartoon episode in minutes",
+            ["title"] = "Runtime In Minutes",
             ["type"] = "`$INTEGER`",
+            ["short"] = "Runtime of the cartoon episode in minutes",
           },
           {
             ["name"] = "title",
-            ["short"] = "Title of the cartoon",
+            ["title"] = "Title",
             ["type"] = "`$STRING`",
+            ["short"] = "Title of the cartoon",
           },
           {
             ["name"] = "year",
-            ["short"] = "Year the cartoon was released",
+            ["title"] = "Year",
             ["type"] = "`$INTEGER`",
+            ["short"] = "Year the cartoon was released",
           },
         },
         ["id"] = {
@@ -143,7 +152,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/cartoons/cartoons2D",
@@ -155,20 +163,21 @@ local function make_config()
                     ["lit"] = "cartoons2D",
                   },
                 },
-                ["select"] = {
-                  ["$action"] = "cartoons2_d",
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
                 ["parts"] = {
                   "cartoons",
                   "cartoons2D",
                 },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {},
+                ["select"] = {
+                  ["$action"] = "cartoons2_d",
+                },
               },
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/cartoons/cartoons3D",
@@ -180,16 +189,18 @@ local function make_config()
                     ["lit"] = "cartoons3D",
                   },
                 },
-                ["select"] = {
-                  ["$action"] = "cartoons3_d",
+                ["parts"] = {
+                  "cartoons",
+                  "cartoons3D",
                 },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "cartoons",
-                  "cartoons3D",
+                ["args"] = {},
+                ["select"] = {
+                  ["$action"] = "cartoons3_d",
                 },
               },
             },

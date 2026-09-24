@@ -1,7 +1,7 @@
 // Typed models for the Cartoons SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,15 +14,6 @@ import (
 
 // Cartoon is the typed data model for the cartoon entity.
 type Cartoon struct {
-	Creator *[]any `json:"creator,omitempty"`
-	Episodes *int `json:"episodes,omitempty"`
-	Genre *[]any `json:"genre,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Rating *string `json:"rating,omitempty"`
-	RuntimeInMinutes *int `json:"runtime_in_minutes,omitempty"`
-	Title *string `json:"title,omitempty"`
-	Year *int `json:"year,omitempty"`
 }
 
 // CartoonListMatch is the typed request payload for Cartoon.ListTyped.

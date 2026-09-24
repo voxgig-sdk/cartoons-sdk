@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CartoonEntity = void 0;
 const CartoonsEntityBase_1 = require("../CartoonsEntityBase");
-// TODO: needs Entity superclass
 class CartoonEntity extends CartoonsEntityBase_1.CartoonsEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

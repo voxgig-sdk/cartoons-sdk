@@ -91,49 +91,58 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "creator",
-						"short": "Creator(s) of the cartoon",
+						"title": "Creator",
 						"type": "`$ARRAY`",
+						"short": "Creator(s) of the cartoon",
 					},
 					map[string]any{
 						"name": "episodes",
-						"short": "Number of episodes",
+						"title": "Episodes",
 						"type": "`$INTEGER`",
+						"short": "Number of episodes",
 					},
 					map[string]any{
 						"name": "genre",
-						"short": "Genre(s) of the cartoon",
+						"title": "Genre",
 						"type": "`$ARRAY`",
+						"short": "Genre(s) of the cartoon",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "Unique identifier for the cartoon",
+						"title": "Id",
 						"type": "`$INTEGER`",
+						"short": "Unique identifier for the cartoon",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "image",
-						"short": "URL to the cartoon's image",
+						"title": "Image",
 						"type": "`$STRING`",
+						"short": "URL to the cartoon's image",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "rating",
-						"short": "Rating of the cartoon",
+						"title": "Rating",
 						"type": "`$STRING`",
+						"short": "Rating of the cartoon",
 					},
 					map[string]any{
 						"name": "runtime_in_minutes",
-						"short": "Runtime of the cartoon episode in minutes",
+						"title": "Runtime In Minutes",
 						"type": "`$INTEGER`",
+						"short": "Runtime of the cartoon episode in minutes",
 					},
 					map[string]any{
 						"name": "title",
-						"short": "Title of the cartoon",
+						"title": "Title",
 						"type": "`$STRING`",
+						"short": "Title of the cartoon",
 					},
 					map[string]any{
 						"name": "year",
-						"short": "Year the cartoon was released",
+						"title": "Year",
 						"type": "`$INTEGER`",
+						"short": "Year the cartoon was released",
 					},
 				},
 				"id": map[string]any{
@@ -147,7 +156,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/cartoons/cartoons2D",
@@ -159,20 +167,21 @@ func MakeConfig() map[string]any {
 										"lit": "cartoons2D",
 									},
 								},
-								"select": map[string]any{
-									"$action": "cartoons2_d",
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"cartoons",
 									"cartoons2D",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{
+									"$action": "cartoons2_d",
+								},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/cartoons/cartoons3D",
@@ -184,16 +193,18 @@ func MakeConfig() map[string]any {
 										"lit": "cartoons3D",
 									},
 								},
-								"select": map[string]any{
-									"$action": "cartoons3_d",
+								"parts": []any{
+									"cartoons",
+									"cartoons3D",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"cartoons",
-									"cartoons3D",
+								"args": map[string]any{},
+								"select": map[string]any{
+									"$action": "cartoons3_d",
 								},
 							},
 						},

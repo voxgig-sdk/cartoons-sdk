@@ -1,0 +1,138 @@
+# Entity: cartoon
+
+main: kit: entity: cartoon: {
+
+  alias: field: {}
+
+  fields: {
+    creator: {
+      h: "Creator"
+      n: "creator"
+      r: false
+      sh: "Creator(s) of the cartoon"
+      t: "`$ARRAY`"
+    }
+    episodes: {
+      h: "Episodes"
+      n: "episodes"
+      r: false
+      sh: "Number of episodes"
+      t: "`$INTEGER`"
+    }
+    genre: {
+      h: "Genre"
+      n: "genre"
+      r: false
+      sh: "Genre(s) of the cartoon"
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique identifier for the cartoon"
+      t: "`$INTEGER`"
+    }
+    image: {
+      fo: "uri"
+      h: "Image"
+      n: "image"
+      r: false
+      sh: "URL to the cartoon's image"
+      t: "`$STRING`"
+    }
+    rating: {
+      h: "Rating"
+      n: "rating"
+      r: false
+      sh: "Rating of the cartoon"
+      t: "`$STRING`"
+    }
+    runtime_in_minutes: {
+      h: "Runtime In Minutes"
+      n: "runtime_in_minutes"
+      r: false
+      sh: "Runtime of the cartoon episode in minutes"
+      t: "`$INTEGER`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      sh: "Title of the cartoon"
+      t: "`$STRING`"
+    }
+    year: {
+      h: "Year"
+      n: "year"
+      r: false
+      sh: "Year the cartoon was released"
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "cartoon"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /cartoons/cartoons2D"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/cartoons/cartoons2D"
+          q: {
+            "$action": "cartoons2_d"
+          }
+          s: [
+            {
+              lit: "cartoons"
+            }
+            {
+              lit: "cartoons2D"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /cartoons/cartoons3D"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/cartoons/cartoons3D"
+          q: {
+            "$action": "cartoons3_d"
+          }
+          s: [
+            {
+              lit: "cartoons"
+            }
+            {
+              lit: "cartoons3D"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
