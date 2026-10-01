@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 CartoonsUtility::setRegistrar(function (CartoonsUtility $u): void {
     $u->clean = [CartoonsClean::class, 'call'];
+    $u->clean_add = [CartoonsClean::class, 'add'];
+    $u->clean_explain = [CartoonsDone::class, 'clean_explain'];
     $u->done = [CartoonsDone::class, 'call'];
     $u->make_error = [CartoonsMakeError::class, 'call'];
     $u->feature_add = [CartoonsFeatureAdd::class, 'call'];

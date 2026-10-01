@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 CartoonsUtility.registrar = ->(u) {
   u.clean = CartoonsUtilities::Clean
+  u.clean_add = CartoonsUtilities::CleanAdd
+  u.clean_explain = CartoonsUtilities::CleanExplain
   u.done = CartoonsUtilities::Done
   u.make_error = CartoonsUtilities::MakeError
   u.feature_add = CartoonsUtilities::FeatureAdd
