@@ -13,7 +13,12 @@ type Context = core.Context
 type Utility = core.Utility
 type Feature = core.Feature
 type Entity = core.Entity
-type CartoonsEntity = core.CartoonsEntity
+type CartoonsEntityBase = core.CartoonsEntityBase
+
+// Deprecated: use CartoonsEntityBase.
+type CartoonsEntity = core.CartoonsEntityBase
+
+type StreamItem = core.StreamItem
 type FetcherFunc = core.FetcherFunc
 type Spec = core.Spec
 type Result = core.Result
@@ -41,7 +46,7 @@ func init() {
 	core.NewTimeoutFeatureFunc = func() core.Feature {
 		return feature.NewTimeoutFeature()
 	}
-	core.NewCartoonEntityFunc = func(client *core.CartoonsSDK, entopts map[string]any) core.CartoonsEntity {
+	core.NewCartoonEntityFunc = func(client *core.CartoonsSDK, entopts map[string]any) core.CartoonsEntityBase {
 		return entity.NewCartoonEntity(client, entopts)
 	}
 }

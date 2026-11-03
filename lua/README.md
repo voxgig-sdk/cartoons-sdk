@@ -12,7 +12,7 @@ It exposes the API as capitalised, semantic **Entities** — e.g. `client:Cartoo
 
 ## Install
 This package is not yet published to LuaRocks. Install it from the
-GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/cartoons-sdk/releases)),
+GitHub release tag (`lua/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/cartoons-sdk/tags)),
 or add the source directory to your `LUA_PATH`:
 
 ```bash
@@ -33,30 +33,8 @@ local sdk = require("cartoons_sdk")
 local client = sdk.new()
 ```
 
-### 2. List cartoon records
-
-Entity operations return `(value, err)`. For `list`, `value` is the
-array of records itself — iterate it directly (there is no wrapper).
-
-```lua
-local cartoons, err = client:Cartoon():list()
-if err then error(err) end
-
-for _, item in ipairs(cartoons) do
-  print(item["id"])
-end
-```
-
 
 ## Error handling
-
-Entity operations return `(value, err)`. Check `err` before using
-the value:
-
-```lua
-local cartoons, err = client:Cartoon():list()
-if err then error(err) end
-```
 
 `direct` follows the same `(value, err)` convention:
 
@@ -112,8 +90,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Cartoon():list()
--- result is the returned data; err is set on failure
+local result, err = client:direct({ path = "/api/resource", method = "GET" })
+-- result holds ok, status, headers and data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -199,7 +177,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `list` | `(reqmatch, ctrl) -> any, err` | List entities matching the criteria. |
+| `list` | `(reqmatch, ctrl) -> any, err` | List entities matching the criteria, one per record. |
 | `data_get` | `() -> table` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> table` | Get entity match criteria. |
@@ -209,18 +187,18 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(value, err)`. The `value` is the operation's
-data **directly** — there is no wrapper:
+Entity operations return `(value, err)`. The `value` is the entity
+itself — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `list` | an array (`table`) of entity records |
+| `list` | an array (`table`) of entities, one per record |
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
     local cartoon, err = client:Cartoon():list()
     if err then error(err) end
-    -- cartoon is the record list
+    -- cartoon is an array of entities, one per record
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -273,12 +251,6 @@ Create an instance: `local cartoon = client:Cartoon(nil)`
 | `runtime_in_minutes` | `number` | Runtime of the cartoon episode in minutes |
 | `title` | `string` | Title of the cartoon |
 | `year` | `number` | Year the cartoon was released |
-
-#### Example: List
-
-```lua
-local cartoons, err = client:Cartoon():list()
-```
 
 ## Features
 
@@ -435,22 +407,6 @@ lua/
 The main module (`cartoons_sdk`) exports the SDK constructor
 and test helper. Import entity or utility modules directly only
 when needed.
-
-### Entity state
-
-Entity instances are stateful. After a successful `list`, the entity
-stores the returned data and match criteria internally.
-
-```lua
-local cartoon = client:Cartoon()
-cartoon:list()
-
--- cartoon:data_get() now returns the cartoon data from the last list
--- cartoon:match_get() returns the last match criteria
-```
-
-Call `make()` to create a fresh instance with the same configuration
-but no stored state.
 
 ### Direct vs entity access
 

@@ -12,5 +12,5 @@ var NewTestFeatureFunc func() Feature
 
 var NewTimeoutFeatureFunc func() Feature
 
-var NewCartoonEntityFunc func(client *CartoonsSDK, entopts map[string]any) CartoonsEntity
+var NewCartoonEntityFunc func(client *CartoonsSDK, entopts map[string]any) CartoonsEntityBase
 

@@ -93,6 +93,7 @@ class CartoonsConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -202,6 +203,10 @@ class CartoonsConfig
                   'select' => [
                     '$action' => 'cartoons2_d',
                   ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
+                  ],
                 ],
                 [
                   'kind' => 'http',
@@ -227,6 +232,10 @@ class CartoonsConfig
                   'args' => [],
                   'select' => [
                     '$action' => 'cartoons3_d',
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],

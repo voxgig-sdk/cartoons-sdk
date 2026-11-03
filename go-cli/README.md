@@ -19,14 +19,13 @@ make build
 export CARTOONS_APIKEY=sk_live_xxx
 
 # 4. Each command line is ONE boru expression, run against the API:
-./cartoons-cli list cartoon
 
 # 5. Override the API base URL for a single call
-CARTOONS_BASE=https://api.example.com ./cartoons-cli list cartoon
+CARTOONS_BASE=https://api.example.com ./cartoons-cli --help
 
 # 6. No arguments -> interactive REPL
 ./cartoons-cli
-cartoons> list cartoon
+cartoons> /help
 cartoons> /quit
 ```
 
@@ -52,7 +51,7 @@ cartoons> /quit
    arguments to open the REPL):
 
    ```sh
-   ./dist/*/cartoons-cli list cartoon
+   ./dist/*/cartoons-cli --help
    ```
 
 4. **Go interactive.** Run the binary with no arguments to open the REPL, then
@@ -62,15 +61,6 @@ That is the whole loop: *build → set key → evaluate boru expressions*.
 
 ## How-to guides
 
-### List the records of an entity
-
-```sh
-./cartoons-cli list cartoon
-```
-
-`list <entity>` returns the first page of records. `<entity>` is a bareword —
-it is auto-quoted as an boru atom, so no quotes are needed.
-
 ### Authenticate and choose an environment
 
 Configuration is read from the environment — nothing is written to disk:
@@ -78,7 +68,7 @@ Configuration is read from the environment — nothing is written to disk:
 ```sh
 export CARTOONS_APIKEY=sk_live_xxx            # API key
 export CARTOONS_BASE=https://api.example.com  # optional: override the API base URL
-./cartoons-cli list cartoon
+./cartoons-cli --help
 ```
 
 Both are injectable by a secrets vault, so the key never has to be typed inline.
@@ -90,7 +80,6 @@ evaluated as its own boru expression:
 
 ```text
 $ ./cartoons-cli
-cartoons> list cartoon
 cartoons> /help
 cartoons> /quit
 ```

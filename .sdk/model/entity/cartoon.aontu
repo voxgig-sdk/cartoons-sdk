@@ -92,6 +92,10 @@ main: kit: entity: cartoon: {
           q: {
             "$action": "cartoons2_d"
           }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "cartoons"
@@ -115,6 +119,10 @@ main: kit: entity: cartoon: {
           o: "/cartoons/cartoons3D"
           q: {
             "$action": "cartoons3_d"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

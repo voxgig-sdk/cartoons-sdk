@@ -96,6 +96,7 @@ def make_config():
         },
         "optspec": {
           "clearTimer": "`$FUNCTION`",
+          "now": "`$FUNCTION`",
           "setTimer": "`$FUNCTION`",
         },
         "strict": False,
@@ -205,6 +206,10 @@ def make_config():
                 "select": {
                   "$action": "cartoons2_d",
                 },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
+                },
               },
               {
                 "kind": "http",
@@ -230,6 +235,10 @@ def make_config():
                 "args": {},
                 "select": {
                   "$action": "cartoons3_d",
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],

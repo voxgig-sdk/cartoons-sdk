@@ -15,7 +15,7 @@ predictable and low-friction for both humans and AI agents.
 
 ## Install
 This package is not yet published to npm. Install it from the GitHub
-release tag (`ts/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/cartoons-sdk/releases)), or from a
+release tag (`ts/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/cartoons-sdk/tags)), or from a
 clone, which carries the compiled `dist/`:
 
 ```bash
@@ -37,36 +37,12 @@ import { CartoonsSDK } from '@voxgig-sdk/cartoons-sdk'
 const client = new CartoonsSDK()
 ```
 
-### 2. List cartoon records
-
-`list()` resolves to an array of Cartoon ENTITIES — every operation
-resolves to entities, not raw records. Iterate them directly, and call
-`.data()` on one for the record it holds:
-
-```ts
-const cartoons = await client.Cartoon().list()
-
-for (const cartoon of cartoons) {
-  console.log(cartoon)
-}
-```
-
 
 ## Error handling
 
-Entity operations reject on failure, so wrap them in `try` / `catch`:
-
-```ts
-try {
-  const cartoons = await client.Cartoon().list()
-  console.log(cartoons)
-} catch (err) {
-  console.error('list failed:', err)
-}
-```
-
 The low-level `direct()` method does **not** throw — it returns the
-value or an `Error`, so check the result before using it:
+result envelope. Branch on `ok`; on failure `status` holds the HTTP status
+(for error responses) and `err` holds the error:
 
 ```ts
 const result = await client.direct({
@@ -75,8 +51,8 @@ const result = await client.direct({
   params: { id: 'example_id' },
 })
 
-if (result instanceof Error) {
-  throw result
+if (!result.ok) {
+  console.error('request failed:', result.status, result.err)
 }
 ```
 
@@ -94,9 +70,6 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
-if (result instanceof Error) {
-  throw result
-}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -125,10 +98,8 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = CartoonsSDK.test()
 
-const cartoon = await client.Cartoon().list()
-// cartoon is the entity, populated with mock response data
-// — call cartoon.data() for the record itself
-console.log(cartoon)
+const result = await client.direct({ path: '/api/resource', method: 'GET' })
+console.log(result)
 ```
 
 You can also use the instance method:
@@ -136,21 +107,6 @@ You can also use the instance method:
 ```ts
 const client = new CartoonsSDK()
 const testClient = client.tester()
-```
-
-### Retain entity state across calls
-
-Entity instances remember their last match and data:
-
-```ts
-const entity = client.Cartoon()
-
-// First call runs the operation and stores its result
-await entity.list()
-
-// Subsequent calls reuse the stored state
-const data = entity.data()
-console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -243,7 +199,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria, one per record. |
 | `data` | `data(data?: Partial<Entity>): Entity` | Get or set entity data. |
 | `match` | `match(match?: Partial<Entity>): Partial<Entity>` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
@@ -252,8 +208,8 @@ All entities share the same interface.
 
 #### Return values
 
-Entity operations resolve to the entity data directly — there is no
-result envelope:
+Entity operations resolve to the entity itself — there is no result
+envelope, and an entity's `data()` reads its record:
 
 - `list` resolves to an **array** of entity objects (iterate it directly;
   there is no `.data` and no `.ok`).
@@ -338,12 +294,6 @@ Create an instance: `const cartoon = client.Cartoon()`
 | `runtime_in_minutes` | `number` | Runtime of the cartoon episode in minutes |
 | `title` | `string` | Title of the cartoon |
 | `year` | `number` | Year the cartoon was released |
-
-#### Example: List
-
-```ts
-const cartoons = await client.Cartoon().list()
-```
 
 ## Features
 
@@ -491,23 +441,6 @@ Import the SDK from the package root:
 ```ts
 import { CartoonsSDK } from '@voxgig-sdk/cartoons-sdk'
 ```
-
-### Entity state
-
-Entity instances are stateful. After a successful `list`, the entity
-stores the returned data and match criteria internally. Subsequent
-calls on the same instance can rely on this state.
-
-```ts
-const cartoon = client.Cartoon()
-await cartoon.list()
-
-// cartoon.data() now returns the cartoon data from the last `list`
-// cartoon.match() returns the last match criteria
-```
-
-Call `make()` to create a fresh instance with the same configuration
-but no stored state.
 
 ### Direct vs entity access
 

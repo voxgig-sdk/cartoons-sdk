@@ -102,6 +102,7 @@ class Config {
       },
       "optspec": {
         "clearTimer": "`$FUNCTION`",
+        "now": "`$FUNCTION`",
         "setTimer": "`$FUNCTION`"
       },
       "strict": false,
@@ -220,6 +221,10 @@ class Config {
               "args": {},
               "select": {
                 "$action": "cartoons2_d"
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             },
             {
@@ -246,6 +251,10 @@ class Config {
               "args": {},
               "select": {
                 "$action": "cartoons3_d"
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]

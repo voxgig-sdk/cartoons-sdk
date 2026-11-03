@@ -79,6 +79,7 @@ module CartoonsConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -188,6 +189,10 @@ module CartoonsConfig
                   "select" => {
                     "$action" => "cartoons2_d",
                   },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
                 },
                 {
                   "kind" => "http",
@@ -213,6 +218,10 @@ module CartoonsConfig
                   "args" => {},
                   "select" => {
                     "$action" => "cartoons3_d",
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],

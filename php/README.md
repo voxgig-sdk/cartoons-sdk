@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/cartoons-sdk/releases)), or
+GitHub release tag (`php/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/cartoons-sdk/tags)), or
 from a clone as a Composer path repository:
 
 ```bash
@@ -36,34 +36,8 @@ require_once 'cartoons_sdk.php';
 $client = new CartoonsSDK();
 ```
 
-### 2. List cartoon records
-
-```php
-try {
-    // list() returns entity instances; data_get() reads each record.
-    $cartoons = $client->Cartoon()->list();
-    foreach ($cartoons as $record) {
-        $item = $record->data_get();
-        echo $item["id"] . " " . $item["creator"] . "\n";
-    }
-} catch (\Throwable $err) {
-    echo "Error: " . $err->getMessage();
-}
-```
-
 
 ## Error handling
-
-Entity operations throw a `\Throwable` on failure, so wrap them in
-`try` / `catch`:
-
-```php
-try {
-    $cartoons = $client->Cartoon()->list();
-} catch (\Throwable $err) {
-    echo "Error: " . $err->getMessage();
-}
-```
 
 `direct()` does **not** throw — it returns the result array. Branch on
 `ok`; on failure `status` holds the HTTP status (for error responses) and
@@ -131,10 +105,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = CartoonsSDK::test();
 
-// list() returns entity instances (throws on error);
-// call data_get() for the mock record.
-$cartoon = $client->Cartoon()->list();
-print_r(array_map(fn($item) => $item->data_get(), $cartoon));
+$result = $client->direct(["path" => "/api/resource", "method" => "GET"]);
+print_r($result);
 ```
 
 ### Use a custom fetch function
@@ -221,7 +193,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
+| `list` | `(?array $reqmatch = null, $ctrl): mixed` | List entities matching the criteria (call with no argument to list all), one per record. |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -231,9 +203,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
-ops, a `list` for `list`) and throw on error. Wrap calls in
-`try`/`catch` to handle failures.
+Entity operations return the entity, and `list` an `array` of entities, one
+per record; an entity's `data_get()` reads its record (an `array`). They
+throw on error, so wrap calls in `try`/`catch` to handle failures.
 
 The `direct()` escape hatch never throws — it returns a result `array`
 you branch on via `$result["ok"]`:
@@ -295,13 +267,6 @@ Create an instance: `$cartoon = $client->Cartoon();`
 | `runtime_in_minutes` | `int` | Runtime of the cartoon episode in minutes |
 | `title` | `string` | Title of the cartoon |
 | `year` | `int` | Year the cartoon was released |
-
-#### Example: List
-
-```php
-// list() returns an array of Cartoon records (throws on error).
-$cartoons = $client->Cartoon()->list();
-```
 
 ## Features
 
@@ -458,22 +423,6 @@ php/
 The main class (`cartoons_sdk.php`) exports the SDK class
 and test helper. Import entity or utility modules directly only
 when needed.
-
-### Entity state
-
-Entity instances are stateful. After a successful `list`, the entity
-stores the returned data and match criteria internally.
-
-```php
-$cartoon = $client->Cartoon();
-$cartoon->list();
-
-// $cartoon->data_get() now returns the cartoon data from the last list
-// $cartoon->match_get() returns the last match criteria
-```
-
-Call `make()` to create a fresh instance with the same configuration
-but no stored state.
 
 ### Direct vs entity access
 

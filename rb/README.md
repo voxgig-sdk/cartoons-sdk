@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/cartoons-sdk/releases)), or
+GitHub release tag (`rb/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/cartoons-sdk/tags)), or
 from a clone:
 
 ```bash
@@ -39,32 +39,8 @@ require_relative "Cartoons_sdk"
 client = CartoonsSDK.new
 ```
 
-### 2. List cartoon records
-
-```ruby
-begin
-  # list returns an Array of Cartoon records — iterate directly.
-  cartoons = client.Cartoon.list
-  cartoons.each do |item|
-    puts "#{item["id"]} #{item["creator"]}"
-  end
-rescue => err
-  warn "list failed: #{err}"
-end
-```
-
 
 ## Error handling
-
-Entity operations raise on failure, so rescue them:
-
-```ruby
-begin
-  cartoons = client.Cartoon.list()
-rescue => err
-  warn "list failed: #{err}"
-end
-```
 
 `direct` does **not** raise — it returns the result hash. Branch on
 `ok`; on failure `status` holds the HTTP status (for error responses) and
@@ -128,10 +104,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = CartoonsSDK.test
 
-# Entity ops return the ENTITY (raises on error);
-# call data_get for the mock record.
-cartoon = client.Cartoon.list()
-puts cartoon
+result = client.direct({ "path" => "/api/resource", "method" => "GET" })
+puts result
 ```
 
 ### Use a custom fetch function
@@ -215,7 +189,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all), one per record. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -225,9 +199,10 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the result data directly. On failure they
-raise a `CartoonsError` (a `StandardError` subclass), so wrap
-calls in `begin`/`rescue` where you need to handle errors.
+Entity operations return the entity, and `list` an `Array` of entities, one
+per record; an entity's `data_get` reads its record. On failure they raise a
+`CartoonsError` (a `StandardError` subclass), so wrap calls in
+`begin`/`rescue` where you need to handle errors.
 
 The `direct` escape hatch is the exception: it never raises and instead
 returns a result `Hash` with these keys:
@@ -288,13 +263,6 @@ Create an instance: `cartoon = client.Cartoon`
 | `runtime_in_minutes` | `Integer` | Runtime of the cartoon episode in minutes |
 | `title` | `String` | Title of the cartoon |
 | `year` | `Integer` | Year the cartoon was released |
-
-#### Example: List
-
-```ruby
-# list returns an Array of Cartoon records (raises on error).
-cartoons = client.Cartoon.list
-```
 
 ## Features
 
@@ -451,22 +419,6 @@ rb/
 The main module (`Cartoons_sdk`) exports the SDK class
 and test helper. Import entity or utility modules directly only
 when needed.
-
-### Entity state
-
-Entity instances are stateful. After a successful `list`, the entity
-stores the returned data and match criteria internally.
-
-```ruby
-cartoon = client.Cartoon
-cartoon.list()
-
-# cartoon.data_get now returns the cartoon data from the last list
-# cartoon.match_get returns the last match criteria
-```
-
-Call `make` to create a fresh instance with the same configuration
-but no stored state.
 
 ### Direct vs entity access
 

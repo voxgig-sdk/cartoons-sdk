@@ -16,7 +16,7 @@ go get github.com/voxgig-sdk/cartoons-sdk/go@latest
 ```
 
 The Go module proxy resolves the version from the `go/vX.Y.Z` GitHub
-release tag — see [Releases](https://github.com/voxgig-sdk/cartoons-sdk/releases) for the available versions.
+release tag — see [Tags](https://github.com/voxgig-sdk/cartoons-sdk/tags) for the available versions.
 
 To vendor from a local checkout instead, clone this repo alongside your
 project and add a `replace` directive pointing at the checked-out
@@ -35,46 +35,27 @@ loading a specific record.
 ### Quickstart
 
 A complete program: create a client, then call the entity operations.
-Each operation returns `(value, error)` — the value is the data itself
-(there is no `{ok, data}` wrapper), so check `err` and use the value
-directly.
+Each operation returns `(value, error)` — the value is the entity, and for
+`List` a `[]any` of entities, one per record (there is no `{ok, data}`
+wrapper), so check `err` and read a record through the entity's
+`Data()`.
 
 ```go
 package main
 
 import (
-    "fmt"
     sdk "github.com/voxgig-sdk/cartoons-sdk/go"
 )
 
 func main() {
     client := sdk.New()
 
-    // List cartoon records — the value is the array of records itself.
-    cartoons, err := client.Cartoon(nil).List(nil, nil)
-    if err != nil {
-        panic(err)
-    }
-    for _, item := range cartoons.([]any) {
-        fmt.Println(item)
-    }
+    _ = client
 }
 ```
 
 
 ## Error handling
-
-Every entity operation returns `(value, error)`. Check `err` before
-using the value — there is no exception to catch:
-
-```go
-cartoons, err := client.Cartoon(nil).List(nil, nil)
-if err != nil {
-    // handle err
-    return
-}
-_ = cartoons
-```
 
 `Direct` follows the same `(value, error)` convention:
 
@@ -137,13 +118,11 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-cartoon, err := client.Cartoon(nil).List(
-    nil, nil,
-)
+result, err := client.Direct(map[string]any{"path": "/api/resource", "method": "GET"})
 if err != nil {
     panic(err)
 }
-fmt.Println(cartoon) // the returned mock data
+fmt.Println(result)
 ```
 
 ### Use a custom fetch function
@@ -220,15 +199,15 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
-| `Cartoon` | `(data map[string]any) CartoonsEntity` | Create a Cartoon entity instance. |
+| `Cartoon` | `(data map[string]any) CartoonsEntityBase` | Create a Cartoon entity instance. |
 
-### Entity interface (CartoonsEntity)
+### Entity interface (CartoonsEntityBase)
 
-All entities implement the `CartoonsEntity` interface.
+All entities implement the `CartoonsEntityBase` interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
+| `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria, one per record. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -236,20 +215,12 @@ All entities implement the `CartoonsEntity` interface.
 
 ### Result shape
 
-Entity operations return `(value, error)`. The `value` is the
-operation's data **directly** — there is no wrapper:
+Entity operations return `(value, error)`. The `value` is the entity
+itself — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `List` | a `[]any` of entity records |
-
-Check `err` first, then use the value directly (or the typed
-`...Typed` variants, which return the entity's model struct and a typed
-slice):
-
-    cartoon, err := client.Cartoon(nil).List(map[string]any{/* fields */}, nil)
-    if err != nil { /* handle */ }
-    // cartoon is the returned record
+| `List` | a `[]any` of entities, one per record |
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -283,12 +254,6 @@ API path: `/cartoons/cartoons2D`
 
 Create an instance: `cartoon := client.Cartoon(nil)`
 
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
-
 #### Fields
 
 | Field | Type | Description |
@@ -302,16 +267,6 @@ Create an instance: `cartoon := client.Cartoon(nil)`
 | `runtime_in_minutes` | `int` | Runtime of the cartoon episode in minutes |
 | `title` | `string` | Title of the cartoon |
 | `year` | `int` | Year the cartoon was released |
-
-#### Example: List
-
-```go
-cartoons, err := client.Cartoon(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(cartoons) // the array of records
-```
 
 ## Features
 
@@ -447,7 +402,9 @@ The Go SDK uses `map[string]any` throughout rather than typed structs.
 This mirrors the dynamic nature of the API and keeps the SDK
 flexible — no code generation is needed when the API schema changes.
 
-Use `core.ToMapAny()` to safely cast results and nested data.
+An operation returns the entity, and its `Data()` returns the record. Use
+`core.ToMapAny()` to safely cast that record, or data nested in it, to
+`map[string]any`: it returns `nil` for anything else, an entity included.
 
 ### Package structure
 
@@ -464,22 +421,6 @@ github.com/voxgig-sdk/cartoons-sdk/go/
 The root package (`github.com/voxgig-sdk/cartoons-sdk/go`) re-exports everything needed
 for normal use. Import sub-packages only when you need specific types
 like `core.ToMapAny`.
-
-### Entity state
-
-Entity instances are stateful. After a successful `List`, the entity
-stores the returned data and match criteria internally.
-
-```go
-cartoon := client.Cartoon(nil)
-cartoon.List(nil, nil)
-
-// cartoon.Data() now returns the cartoon data from the last list
-// cartoon.Match() returns the last match criteria
-```
-
-Call `Make()` to create a fresh instance with the same configuration
-but no stored state.
 
 ### Direct vs entity access
 

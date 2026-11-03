@@ -3,11 +3,16 @@ declare(strict_types=1);
 
 // Cartoons SDK utility: prepare_body
 
+require_once __DIR__ . '/Media.php';
+
 class CartoonsPrepareBody
 {
     public static function call(CartoonsContext $ctx): mixed
     {
         if ($ctx->op->input === 'data') {
+            if (CartoonsMedia::isRawRequest($ctx->point)) {
+                return CartoonsMedia::rawBody($ctx->reqdata);
+            }
             $body = ($ctx->utility->transform_request)($ctx);
             // PHP cannot tell an empty map from an empty list, and this
             // vendored struct answers [] where the canonical transform

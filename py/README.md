@@ -15,7 +15,7 @@ keeps the cognitive load low.
 
 ## Install
 This package is not yet published to PyPI. Install it from the GitHub
-release tag (`py/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/cartoons-sdk/releases)) or
+release tag (`py/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/cartoons-sdk/tags)) or
 from a source checkout:
 
 ```bash
@@ -36,32 +36,8 @@ from cartoons_sdk import CartoonsSDK
 client = CartoonsSDK()
 ```
 
-### 2. List cartoon records
-
-`list()` returns a `list` of records (each a `dict`) and raises on
-error — iterate it directly.
-
-```python
-try:
-    cartoons = client.Cartoon().list()
-    for cartoon in cartoons:
-        print(cartoon)
-except Exception as err:
-    print(f"list failed: {err}")
-```
-
 
 ## Error handling
-
-Entity operations raise on failure, so wrap them in `try` / `except`:
-
-```python
-try:
-    cartoons = client.Cartoon().list()
-    print(cartoons)
-except Exception as err:
-    print(f"list failed: {err}")
-```
 
 `direct()` does **not** raise — it returns the result envelope. Branch
 on `ok`; on failure `status` holds the HTTP status (for error responses)
@@ -124,10 +100,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = CartoonsSDK.test()
 
-# Entity ops return the ENTITY and raises on error;
-# call data_get() for the record.
-cartoon = client.Cartoon().list()
-# cartoon contains the mock response record
+result = client.direct({"path": "/api/resource", "method": "GET"})
+print(result)
 ```
 
 ### Use a custom fetch function
@@ -211,7 +185,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
+| `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria, one per record. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -221,9 +195,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
-ops, a `list` for `list`) and raise on error. Wrap calls in
-`try`/`except` to handle failures.
+Entity operations return the entity, and `list` a `list` of entities, one
+per record; an entity's `data_get()` reads its record (a `dict`). They raise
+on error, so wrap calls in `try`/`except` to handle failures.
 
 The `direct()` escape hatch never raises — it returns a result `dict`
 you branch on via `result["ok"]`:
@@ -285,12 +259,6 @@ Create an instance: `cartoon = client.Cartoon()`
 | `runtime_in_minutes` | `int` | Runtime of the cartoon episode in minutes |
 | `title` | `str` | Title of the cartoon |
 | `year` | `int` | Year the cartoon was released |
-
-#### Example: List
-
-```python
-cartoons = client.Cartoon().list()
-```
 
 ## Features
 
@@ -446,22 +414,6 @@ py/
 
 The main module (`cartoons_sdk`) exports the SDK class.
 Import entity or utility modules directly only when needed.
-
-### Entity state
-
-Entity instances are stateful. After a successful `list`, the entity
-stores the returned data and match criteria internally.
-
-```python
-cartoon = client.Cartoon()
-cartoon.list()
-
-# cartoon.data_get() now returns the cartoon data from the last list
-# cartoon.match_get() returns the last match criteria
-```
-
-Call `make()` to create a fresh instance with the same configuration
-but no stored state.
 
 ### Direct vs entity access
 

@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { CartoonsSDK, BaseFeature, stdutil } from '../../..'
+import { CartoonsSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,17 +41,19 @@ describe('CartoonEntity', async () => {
   })
 
 
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.CARTOONS_TEST_LIVE
-    for (const op of ['list']) {
+    for (const op of []) {
       if (!live && maybeSkipControl(t, 'entityOp', 'cartoon.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"creator":{"a":true,"h":"Creator","n":"creator","r":false,"sh":"Creator(s) of the cartoon","t":"`$ARRAY`","key$":"creator","index$":0},"episodes":{"a":true,"h":"Episodes","n":"episodes","r":false,"sh":"Number of episodes","t":"`$INTEGER`","key$":"episodes","index$":1},"genre":{"a":true,"h":"Genre","n":"genre","r":false,"sh":"Genre(s) of the cartoon","t":"`$ARRAY`","key$":"genre","index$":2},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Unique identifier for the cartoon","t":"`$INTEGER`","key$":"id","index$":3},"image":{"a":true,"fo":"uri","h":"Image","n":"image","r":false,"sh":"URL to the cartoon's image","t":"`$STRING`","key$":"image","index$":4},"rating":{"a":true,"h":"Rating","n":"rating","r":false,"sh":"Rating of the cartoon","t":"`$STRING`","key$":"rating","index$":5},"runtime_in_minutes":{"a":true,"h":"Runtime In Minutes","n":"runtime_in_minutes","r":false,"sh":"Runtime of the cartoon episode in minutes","t":"`$INTEGER`","key$":"runtime_in_minutes","index$":6},"title":{"a":true,"h":"Title","n":"title","r":false,"sh":"Title of the cartoon","t":"`$STRING`","key$":"title","index$":7},"year":{"a":true,"h":"Year","n":"year","r":false,"sh":"Year the cartoon was released","t":"`$INTEGER`","key$":"year","index$":8}},"id":{"field":"id","name":"id"},"name":"cartoon","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /cartoons/cartoons2D","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/cartoons/cartoons2D","q":{"$action":"cartoons2_d"},"r":{},"s":[{"lit":"cartoons"},{"lit":"cartoons2D"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"GET /cartoons/cartoons3D","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/cartoons/cartoons3D","q":{"$action":"cartoons3_d"},"r":{},"s":[{"lit":"cartoons"},{"lit":"cartoons3D"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"cartoon","name__orig":"cartoon","Name":"Cartoon","name_":"cartoon","name-":"cartoon","NAME":"CARTOON","index$":0}, {"active":true,"entity":"cartoon","key$":"BasicCartoonFlow","kind":"basic","name":"BasicCartoonFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"cartoon_ref01"}}],"index$":0}]}, 'Cartoon', {"GET /cartoons/cartoons2D":{"protocol":"http","parameters":[]},"GET /cartoons/cartoons3D":{"protocol":"http","parameters":[]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"creator":{"a":true,"h":"Creator","n":"creator","r":false,"sh":"Creator(s) of the cartoon","t":"`$ARRAY`","key$":"creator","index$":0},"episodes":{"a":true,"h":"Episodes","n":"episodes","r":false,"sh":"Number of episodes","t":"`$INTEGER`","key$":"episodes","index$":1},"genre":{"a":true,"h":"Genre","n":"genre","r":false,"sh":"Genre(s) of the cartoon","t":"`$ARRAY`","key$":"genre","index$":2},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Unique identifier for the cartoon","t":"`$INTEGER`","key$":"id","index$":3},"image":{"a":true,"fo":"uri","h":"Image","n":"image","r":false,"sh":"URL to the cartoon's image","t":"`$STRING`","key$":"image","index$":4},"rating":{"a":true,"h":"Rating","n":"rating","r":false,"sh":"Rating of the cartoon","t":"`$STRING`","key$":"rating","index$":5},"runtime_in_minutes":{"a":true,"h":"Runtime In Minutes","n":"runtime_in_minutes","r":false,"sh":"Runtime of the cartoon episode in minutes","t":"`$INTEGER`","key$":"runtime_in_minutes","index$":6},"title":{"a":true,"h":"Title","n":"title","r":false,"sh":"Title of the cartoon","t":"`$STRING`","key$":"title","index$":7},"year":{"a":true,"h":"Year","n":"year","r":false,"sh":"Year the cartoon was released","t":"`$INTEGER`","key$":"year","index$":8}},"id":{"field":"id","name":"id"},"name":"cartoon","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /cartoons/cartoons2D","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/cartoons/cartoons2D","q":{"$action":"cartoons2_d"},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"cartoons"},{"lit":"cartoons2D"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"GET /cartoons/cartoons3D","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/cartoons/cartoons3D","q":{"$action":"cartoons3_d"},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"cartoons"},{"lit":"cartoons3D"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"cartoon","name__orig":"cartoon","Name":"Cartoon","name_":"cartoon","name-":"cartoon","NAME":"CARTOON","index$":0}, {"active":true,"entity":"cartoon","key$":"BasicCartoonFlow","kind":"basic","name":"BasicCartoonFlow","param":{},"step":[{"a":false,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"cartoon_ref01"}}],"unreachable":true}]}, 'Cartoon', {"GET /cartoons/cartoons2D":{"protocol":"http","parameters":[]},"GET /cartoons/cartoons3D":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -61,17 +63,16 @@ describe('CartoonEntity', async () => {
 
     let cartoon_ref01_data = Object.values(setup.data.existing.cartoon)[0] as any
 
-    // LIST
-    const cartoon_ref01_ent = client.Cartoon()
-    const cartoon_ref01_match: any = {}
-
-    const cartoon_ref01_list = (await cartoon_ref01_ent.list(cartoon_ref01_match)).map((e: any) => e.data())
-
-
   })
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

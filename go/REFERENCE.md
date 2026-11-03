@@ -47,7 +47,7 @@ client := sdk.TestSDK(testopts, sdkopts)
 
 ### Instance Methods
 
-#### `Cartoon(data map[string]any) CartoonsEntity`
+#### `Cartoon(data map[string]any) CartoonsEntityBase`
 
 Create a new `Cartoon` entity instance. Pass `nil` for no initial data.
 
@@ -108,20 +108,6 @@ fmt.Println(cartoon.GetName()) // "cartoon"
 | `title` | `string` | No | Title of the cartoon |
 | `year` | `int` | No | Year the cartoon was released |
 
-### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns an array.
-
-```go
-results, err := client.Cartoon(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(results)
-```
-
 ### Common Methods
 
 #### `Data(args ...any) any`
@@ -138,6 +124,14 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 Create a new `CartoonEntity` instance with the same client and
 options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
 
 #### `GetName() string`
 
@@ -303,6 +297,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

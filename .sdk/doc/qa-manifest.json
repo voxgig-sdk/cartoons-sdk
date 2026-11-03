@@ -3,5 +3,17 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Creator(s) of the cartoon",
+      "Genre(s) of the cartoon",
+      "If cartoons is what you like then boy do we have a full list of all the cartoons from the past and present and all their details including a amazingly sourced image to showcase",
+      "Number of episodes",
+      "Production server",
+      "Successful response",
+      "URL to the cartoon&#39;s image",
+      "Unique identifier for the cartoon"
+    ]
+  }
 }
